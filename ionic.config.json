@@ -1,0 +1,7 @@
+{
+  "name": "ExamenU3Hotel",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
