@@ -1,0 +1,100 @@
+#container {
+    text-align: center;
+    position: relative;
+    height: 100vh;
+  }
+
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  #logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+  }
+  
+  .formulario{
+    display: block;
+    position: relative;
+  }
+  
+
+
+h1{
+    color: #EA7622;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h2{
+    color: #636363;
+    text-align: justify;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px; 
+    font-size: 15px;
+}
+
+img{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 90%;
+}
+
+  #headerLogo {
+    height: 3em;
+    width: 5em;
+  }
+
+  #headerTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1090cc;
+    vertical-align: text-bottom;
+    margin-left: 1em;
+    margin-top: 1em;
+  }
+
+  .slider-container {
+    scroll-snap-type: x mandatory;
+  }
+  .slider-container img {
+    scroll-snap-align: center;
+  }
+  .slider-container {
+    display: flex;
+    width: 90%;
+    overflow-x: scroll;
+  }
+  
+  .slider-container img {
+    flex: 0 0 100%;
+    width: 90%;
+    object-fit: cover;
+  }
+  .slider-container {
+    display: flex;
+    width: 90%;
+    overflow-x: scroll
+  
+    /* Vamos a añadir esto 👇 */
+  }
+  
+  .slider-container img {
+    flex: 0 0 90%;
+    width: 90%;
+    object-fit: cover;
+  
+    /* Vamos a añadir esto 👇 */
+    scroll-snap-align: center;
+  }
