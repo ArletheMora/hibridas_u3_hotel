@@ -1,19 +1,60 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Actividades
-    </ion-title>
+    <ion-row>
+      <ion-img id="headerLogo" src="/assets/images/logo.png" size="xs"></ion-img>
+      <ion-label id="headerTitle" align-self-end>ACTIVIDADES</ion-label>  
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Actividades</ion-title>
-    </ion-toolbar>
   </ion-header>
-
-   
   
-
+  <div id="container">
+    <form >
+      <div class="formulario">
+        <ion-accordion-group>
+          <ion-accordion value="first">
+            <ion-item slot="header" color="light">
+              <ion-label>BUCEO</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <h1>HORARIOS</h1>
+              <img src="/assets/images/horarios.png">
+              <h2>El Hotel estará abierto al público de las 8:00 horas a las 21:30 horas, si el huésped desea 
+                  entrar o salir después de las 21:30 horas, entonces éste deberá de tocar el timbre de la puerta 
+                  principal. La puerta de acceso al hotel después de las 21:30 horas será abierta y cerrada 
+                  únicamente por personal del hotel.</h2>
+            </div>
+          </ion-accordion>
+          <ion-accordion value="second">
+            <ion-item slot="header" color="light">
+              <ion-label>PESCA</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              Second Content
+            </div>
+          </ion-accordion>
+          <ion-accordion value="third">
+            <ion-item slot="header" color="light">
+              <ion-label>KAYAKING</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              Third Content
+            </div>
+          </ion-accordion>
+          <ion-accordion value="first">
+            <ion-item slot="header" color="light">
+              <ion-label>AGUAS TERMALES</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              First Content
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        
+      </div>
+    </form>
+  </div>
 </ion-content>

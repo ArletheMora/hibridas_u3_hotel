@@ -46,9 +46,11 @@ h2{
 }
 
 img{
-    margin-left: 35px;
+    margin-left: 20px;
     margin-right: 20px;
-    width: 90%;
+    width: 20%;
+    height: 20%;
+
 }
 
   #headerLogo {
@@ -73,24 +75,25 @@ img{
   }
   .slider-container {
     display: flex;
-    width: 80%;
+    width: 100%;
     overflow-x: scroll;
   }
   
   .slider-container img {
     flex: 0 0 100%;
-    width: 80%;
+    width: 100%;
     object-fit: cover;
   }
   .slider-container {
     display: flex;
-    width:80%;
+    width:93%;
+    margin-left: 10px;
     overflow-x: scroll
   }
   
   .slider-container img {
-    flex: 0 0 80%;
-    width: 90%;
+    flex: 0 0 100%;
+    width: 100%;
     object-fit: cover;
     scroll-snap-align: center;
-  }
+  } 
