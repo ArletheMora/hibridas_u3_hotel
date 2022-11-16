@@ -46,7 +46,7 @@ h2{
 }
 
 img{
-    margin-left: 20px;
+    margin-left: 35px;
     margin-right: 20px;
     width: 90%;
 }
@@ -73,28 +73,24 @@ img{
   }
   .slider-container {
     display: flex;
-    width: 90%;
+    width: 80%;
     overflow-x: scroll;
   }
   
   .slider-container img {
     flex: 0 0 100%;
-    width: 90%;
+    width: 80%;
     object-fit: cover;
   }
   .slider-container {
     display: flex;
-    width: 90%;
+    width:80%;
     overflow-x: scroll
-  
-    /* Vamos a añadir esto 👇 */
   }
   
   .slider-container img {
-    flex: 0 0 90%;
+    flex: 0 0 80%;
     width: 90%;
     object-fit: cover;
-  
-    /* Vamos a añadir esto 👇 */
     scroll-snap-align: center;
   }
