@@ -10,18 +10,18 @@
 <ion-content class="ion-margin">
   <ion-item>
     <ion-label position="floating">Nombre</ion-label>
-    <ion-input [(ngModel)]="person.name" ></ion-input>
+    <ion-input formControlName="person.name" ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Teléfono celular</ion-label>
-    <ion-input [(ngModel)]="person.phone" ></ion-input>
+    <ion-input formControlName="person.phone" ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label>Fecha inicio</ion-label>
     <ion-datetime-button datetime="fechaInicio"></ion-datetime-button>
     <ion-modal [keepContentsMounted]="true">
       <ng-template>
-        <ion-datetime presentation="date" id="fechaInicio"></ion-datetime>
+        <ion-datetime formControlName="person.fechaInicio" presentation="date" id="fechaInicio"></ion-datetime>
       </ng-template>
     </ion-modal>
   </ion-item>
@@ -30,18 +30,18 @@
     <ion-datetime-button datetime="fechaFin"></ion-datetime-button>
     <ion-modal [keepContentsMounted]="true">
       <ng-template>
-        <ion-datetime presentation="date" id="fechaFin"></ion-datetime>
+        <ion-datetime formControlName="person.fechaFin" presentation="date" id="fechaFin"></ion-datetime>
       </ng-template>
     </ion-modal>
   </ion-item>
   <ion-item>
     <ion-label>Habitación</ion-label>
-    <ion-select placeholder="">
+    <ion-select formControlName="habitación" placeholder="">
       <ion-select-option value="a1">A1</ion-select-option>
       <ion-select-option value="a2">A2</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button expand="block" fill="clear" shape="round">
+  <ion-button (click)='addPerson()' expand="block" fill="clear" shape="round">
     Guardar
   </ion-button>
 </ion-content>
