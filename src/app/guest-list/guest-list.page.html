@@ -1,9 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>guestList</ion-title>
+    <ion-title>Lista de huéspedes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-item-sliding>
+          <ion-item-options side="start">
+            <ion-item-option color="primary">
+              <ion-icon slot="bottom" name="eye"></ion-icon>
+              Ver</ion-item-option
+            >
+          </ion-item-options>
 
+          <ion-item class="">
+            <ion-label>Nombre </ion-label><br /><br />
+            <ion-label>Teléfono </ion-label><br /><br />
+            <ion-label>Fecha entrada </ion-label><br /><br />
+            <ion-label>Fecha salida </ion-label><br /><br />
+            <ion-label>Habitación </ion-label><br /><br />
+          </ion-item>
+
+          <ion-item-options side="end" (ionSwipe)="presentAlert()">
+            <ion-item-option color="danger">
+              <ion-icon slot="bottom" name="trash"></ion-icon>Eliminar</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
