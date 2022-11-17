@@ -1,3 +1,5 @@
+import { PersonService } from '../services/person.service';
+import { Person } from './../models/person';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewGuestPage implements OnInit {
 
-  constructor() { }
+  public person: Person;
+
+  constructor(
+    private personService: PersonService
+  ) {
+    this.person = {
+      id: 0,
+      name: '',
+      phone: '',
+      fechaInicio: '',
+      fechaFin: '',
+      habitación: '',
+      tipo: ''
+    }
+  }
 
   ngOnInit() {
+  }
+
+  public addPerson() {
+    if (this.person.name !== '' && this.person.phone !== '' && this.person.fechaInicio !== null && this.person.fechaFin !== null && this.person.habitación !== '') {
+      this.personService.addPerson(this.person);
+      this.person = {
+        id: 0,
+        name: '',
+        phone: '',
+        fechaInicio: '',
+        fechaFin: '',
+        habitación: '',
+        tipo: ''
+      }
+    }
   }
 
 }

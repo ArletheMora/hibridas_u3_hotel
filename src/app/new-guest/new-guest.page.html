@@ -1,9 +1,47 @@
 <ion-header>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
   <ion-toolbar>
-    <ion-title>newGuest</ion-title>
+    <ion-title>Nuevo huesped</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-margin">
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="person.name" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Teléfono celular</ion-label>
+    <ion-input [(ngModel)]="person.phone" ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha inicio</ion-label>
+    <ion-datetime-button datetime="fechaInicio"></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime presentation="date" id="fechaInicio"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha fin</ion-label>
+    <ion-datetime-button datetime="fechaFin"></ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime presentation="date" id="fechaFin"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+  <ion-item>
+    <ion-label>Habitación</ion-label>
+    <ion-select placeholder="">
+      <ion-select-option value="a1">A1</ion-select-option>
+      <ion-select-option value="a2">A2</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button expand="block" fill="clear" shape="round">
+    Guardar
+  </ion-button>
 </ion-content>
