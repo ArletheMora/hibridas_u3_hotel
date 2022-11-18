@@ -39,7 +39,7 @@ export class PersonService {
       {
         id: 4,
         name: 'Polo',
-        phone: '3112422222',
+        phone: '3112272687',
         fechaInicio: '2022-11-17',
         fechaFin: '2022-11-19',
         habitacion: 'A3',

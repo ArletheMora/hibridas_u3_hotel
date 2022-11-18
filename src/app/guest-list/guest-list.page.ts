@@ -11,6 +11,9 @@ import { AlertController } from '@ionic/angular';
 export class GuestListPage implements OnInit {
   public personas!: Person[];
   public huespedes: Person[] = [];
+  public url : String = "https://api.whatsapp.com/send?phone=+521"
+  public token = "&text=pruebaToken"
+  //https://api.whatsapp.com/send?phone=+5213112264704&text=prueba
 
   constructor(
     private alertController: AlertController,
