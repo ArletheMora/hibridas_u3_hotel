@@ -1,3 +1,5 @@
+import { PersonService } from './../services/person.service';
+import { Person } from './../models/person';
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
@@ -7,12 +9,33 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./guest-list.page.scss'],
 })
 export class GuestListPage implements OnInit {
-  
-  constructor(private alertController: AlertController) {}
+  public personas!: Person[];
+  public huespedes: Person[] = [];
+
+  constructor(
+    private alertController: AlertController,
+    private personService: PersonService
+  ) {
+    this.huespedes = [];
+    this.personas = this.personService.getPersons();
+    for (let i = 0; i < this.personas.length; i++) {
+      console.log(this.personas[i].tipo);
+      if (this.personas[i].tipo === 'guest') {
+        this.huespedes.push(this.personas[i]);
+        console.log('se agregó' + this.personas[i].name);
+      }
+    }
+  }
 
   ngOnInit() {}
 
-  async presentAlert() {
+  public removePerson(id: number) {
+    this.huespedes = this.personService.removePerson(id);
+    this.personas = this.personService.getPersons();
+    console.log(id);
+  }
+
+  async presentAlert(id: number) {
     const alert = await this.alertController.create({
       header: '¿Seguro que deseas eliminar?',
       cssClass: 'custom-alert',
@@ -24,10 +47,15 @@ export class GuestListPage implements OnInit {
         {
           text: 'Sí',
           cssClass: 'alert-button-confirm',
-        }
-      ]
+          handler: () => {
+            console.log(id);
+            this.removePerson(id);
+            this.personas = this.personService.getPersons();
+          },
+        },
+      ],
     });
-    
+
     await alert.present();
   }
 }

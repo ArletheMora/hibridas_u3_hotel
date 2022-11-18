@@ -4,6 +4,6 @@ export class Person {
     phone!: string;
     fechaInicio!: string;
     fechaFin!: string;
-    habitación!: string;
+    habitacion!: string;
     tipo!: string;
 }

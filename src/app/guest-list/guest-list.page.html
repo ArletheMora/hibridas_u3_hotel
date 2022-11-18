@@ -8,24 +8,23 @@
   <ion-row>
     <ion-col>
       <ion-list>
-        <ion-item-sliding>
+        <ion-item-sliding *ngFor="let huesped of huespedes" >
           <ion-item-options side="start">
             <ion-item-option color="primary">
               <ion-icon slot="bottom" name="eye"></ion-icon>
-              Ver</ion-item-option
-            >
+              Ver</ion-item-option>
           </ion-item-options>
 
           <ion-item class="">
-            <ion-label>Nombre </ion-label><br /><br />
-            <ion-label>Teléfono </ion-label><br /><br />
-            <ion-label>Fecha entrada </ion-label><br /><br />
-            <ion-label>Fecha salida </ion-label><br /><br />
-            <ion-label>Habitación </ion-label><br /><br />
+            <ion-label>{{huesped.name}} </ion-label><br /><br />
+            <ion-label>{{huesped.phone}} </ion-label><br /><br />
+            <ion-label>{{huesped.fechaInicio}} </ion-label><br /><br />
+            <ion-label>{{huesped.fechaFin}} </ion-label><br /><br />
+            <ion-label>{{huesped.habitacion}} </ion-label><br /><br />
           </ion-item>
 
-          <ion-item-options side="end" (ionSwipe)="presentAlert()">
-            <ion-item-option color="danger">
+          <ion-item-options side="end" (ionSwipe)="presentAlert(huesped.id)">
+            <ion-item-option color="danger" >
               <ion-icon slot="bottom" name="trash"></ion-icon>Eliminar</ion-item-option>
           </ion-item-options>
         </ion-item-sliding>
@@ -34,7 +33,7 @@
   </ion-row>
 
   <ion-fab vertical="bottom" horizontal="end">
-    <ion-fab-button>
+    <ion-fab-button [routerLink]="['/new-guest']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

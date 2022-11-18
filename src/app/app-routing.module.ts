@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'dsgvs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./new-guest/new-guest.module').then( m => m.NewGuestPageModule)
   },
   {
-    path: 'guest-list',
+    path: '',//guest-list
     loadChildren: () => import('./guest-list/guest-list.module').then( m => m.GuestListPageModule)
   }
 ];
