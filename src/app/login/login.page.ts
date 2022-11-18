@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginPage implements OnInit {
 
   public myForm: FormGroup;
-  public validationMessages: Object
+  public validationMessage: Object
 
   constructor(
     private personService: PersonService,
@@ -25,14 +25,16 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.myForm = this.fB.group({
-      name: [
+      phone: [
         '',
         Validators.compose([
           Validators.required,
-          Validators.pattern('^[a-zÑñA-Z]+[a-zÑñA-Z ]*$')
+          Validators.minLength(10),
+          Validators.maxLength(10),
+          Validators.pattern('^[0-9]+$')
         ])
       ],
-      phone: [
+      token: [
         '',
         Validators.compose([
           Validators.required,
@@ -42,15 +44,23 @@ export class LoginPage implements OnInit {
         ])
       ],
     })
-    this.validationMessages = {
-      name: [
+    this.validationMessage = {
+      phone: [
         {
           type: 'required',
-          message: 'Nombre oblogatorio'
+          message: 'Número de telefono obligatorio'
+        },
+        {
+          type: 'minlength',
+          message: 'El numero de telefono debe ser de 10 dígitos'
+        },
+        {
+          type: 'maxlength',
+          message: 'El numero de telefono debe ser de 10 dígitos'
         },
         {
           type: 'pattern',
-          message: 'El nombre esta mal formado'
+          message: 'El numero de telefono esta mal formado'
         }
       ],
       token: [
@@ -75,9 +85,9 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    if (this.myForm.get('phone').value == "Admin" && this.myForm.get('room').value == "test") {
+    if (this.myForm.get('phone').value === "3112264704" && this.myForm.get('token').value === "99999") {
       this.r.navigate(
-        ['/admin-view']
+        ['/guest-list']
       )
       this.myForm.reset()
       return
@@ -104,9 +114,9 @@ export class LoginPage implements OnInit {
   }
 
   reservaValida(): Boolean {
-    let b = this.personService.getGuestByPhoneNumber(this.myForm.get('phone').value)
-    if (b) {
-      if (b.token.toString() == this.myForm.get('room').value) {
+    let user = this.personService.getGuestByPhoneNumber(this.myForm.get('phone').value)
+    if (user) {
+      if (user.token.toString() === this.myForm.get('token').value) {
         return true
       } else {
         return false
