@@ -13,8 +13,8 @@ export class PersonService {
         id: 1,
         name: 'Juan Pablo Campos',
         phone: '',
-        fechaInicio: '',
-        fechaFin: '',
+        fechaInicio: new Date(),
+        fechaFin: new Date(),
         habitacion: '',
         tipo: 'admin',
       },
@@ -22,8 +22,8 @@ export class PersonService {
         id: 2,
         name: 'Adrian',
         phone: '3112222222',
-        fechaInicio: '2022-11-17',
-        fechaFin: '2022-11-19',
+        fechaInicio: new Date(),
+        fechaFin: new Date(),
         habitacion: 'A1',
         tipo: 'guest',
       },
@@ -31,8 +31,8 @@ export class PersonService {
         id: 3,
         name: 'Ana',
         phone: '3112222221',
-        fechaInicio: '2022-11-17',
-        fechaFin: '2022-11-19',
+        fechaInicio: new Date(),
+        fechaFin: new Date(),
         habitacion: 'A2',
         tipo: 'guest',
       },
@@ -40,8 +40,8 @@ export class PersonService {
         id: 4,
         name: 'Polo',
         phone: '3112272687',
-        fechaInicio: '2022-11-17',
-        fechaFin: '2022-11-19',
+        fechaInicio: new Date(),
+        fechaFin: new Date(),
         habitacion: 'A3',
         tipo: 'guest',
       },
@@ -63,5 +63,9 @@ export class PersonService {
       console.log(this.people[i].name);
     }
     return this.people;
+  }
+
+  public getID(): number {
+    return this.people[this.people.length-1].id + 1;
   }
 }

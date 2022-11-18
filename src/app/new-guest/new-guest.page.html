@@ -8,40 +8,91 @@
 </ion-header>
 
 <ion-content class="ion-margin">
-  <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input formControlName="person.name" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Teléfono celular</ion-label>
-    <ion-input formControlName="person.phone" ></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Fecha inicio</ion-label>
-    <ion-datetime-button datetime="fechaInicio"></ion-datetime-button>
-    <ion-modal [keepContentsMounted]="true">
-      <ng-template>
-        <ion-datetime formControlName="person.fechaInicio" presentation="date" id="fechaInicio"></ion-datetime>
-      </ng-template>
-    </ion-modal>
-  </ion-item>
-  <ion-item>
-    <ion-label>Fecha fin</ion-label>
-    <ion-datetime-button datetime="fechaFin"></ion-datetime-button>
-    <ion-modal [keepContentsMounted]="true">
-      <ng-template>
-        <ion-datetime formControlName="person.fechaFin" presentation="date" id="fechaFin"></ion-datetime>
-      </ng-template>
-    </ion-modal>
-  </ion-item>
-  <ion-item>
-    <ion-label>Habitación</ion-label>
-    <ion-select formControlName="habitación" placeholder="">
-      <ion-select-option value="a1">A1</ion-select-option>
-      <ion-select-option value="a2">A2</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-button (click)='addPerson()' expand="block" fill="clear" shape="round">
-    Guardar
-  </ion-button>
+  <ion-grid>
+    <form [formGroup]="myForm">
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input formControlName="name" ></ion-input>
+          </ion-item>
+          <div>
+            <ng-container *ngFor="let item of validationMessage['name']">
+              <div class="errormessage" *ngIf="(myForm.get('name').dirty || myForm.get('name').touched) && myForm.get('name').hasError(item.type)">
+                {{item.message}}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Teléfono celular</ion-label>
+            <ion-input formControlName="phone" ></ion-input>
+          </ion-item>
+          <div>
+            <ng-container *ngFor="let item of validationMessage['phone']">
+              <div class="errormessage" *ngIf="(myForm.get('phone').dirty || myForm.get('phone').touched) && myForm.get('phone').hasError(item.type)">
+                {{item.message}}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>Fecha inicio</ion-label>
+            <ion-datetime-button datetime="fechaInicio"></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime formControlName="fechaInicio" presentation="date" id="fechaInicio"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-item>
+          <div>
+            <ng-container *ngFor="let item of validationMessage['fechaInicio']">
+              <div class="errormessage" *ngIf="(myForm.get('fechaInicio').dirty || myForm.get('fechaInicio').touched) && myForm.get('fechaInicio').hasError(item.type)">
+                {{item.message}}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>Fecha fin</ion-label>
+            <ion-datetime-button datetime="fechaFin"></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime formControlName="fechaFin" presentation="date" id="fechaFin"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-item>
+          <div>
+            <ng-container *ngFor="let item of validationMessage['fechaFin']">
+              <div class="errormessage" *ngIf="(myForm.get('fechaFin').dirty || myForm.get('fechaFin').touched) && myForm.get('fechaFin').hasError(item.type)">
+                {{item.message}}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-select placeholder="Habitacion" formControlName="room"> 
+              <ion-select-option *ngFor="let item of rooms" [value]="item.roomCode">{{item.roomCode}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div>
+            <ng-container *ngFor="let item of validationMessage ['room']">
+              <div class="errormessage" *ngIf="(myForm.get('room').dirty || 
+                                                myForm.get('room').touched) && 
+                                                myForm.get('room').hasError(item.type)">
+                {{item.message}}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-button (click)='addPerson()' expand="block" fill="clear" shape="round">
+        Guardar
+      </ion-button>
+    </form>
+  </ion-grid>
 </ion-content>
