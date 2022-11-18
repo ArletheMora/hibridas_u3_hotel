@@ -5,6 +5,7 @@ import { Person } from './../models/person';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-new-guest',
@@ -22,8 +23,10 @@ export class NewGuestPage implements OnInit {
     private personService: PersonService,
     private fb: FormBuilder,
     private rS: RoomService,
-    private tC: ToastController
-  ) {}
+    private tC: ToastController,
+    private r: Router,
+
+  ) { }
 
   ngOnInit() {
 
@@ -39,11 +42,11 @@ export class NewGuestPage implements OnInit {
           ])
         ],
         phone: [
-          '', 
+          '',
           Validators.compose([
-            Validators.required, 
-            Validators.minLength(10), 
-            Validators.maxLength(10), 
+            Validators.required,
+            Validators.minLength(10),
+            Validators.maxLength(10),
             Validators.pattern('^[0-9]+$')
           ])
         ],
@@ -146,6 +149,7 @@ export class NewGuestPage implements OnInit {
         });
         toast.present();
         this.myForm.reset();
+        this.r.navigate(['']);
       }
     }
   }
