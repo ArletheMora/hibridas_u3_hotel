@@ -6,4 +6,5 @@ export class Person {
     fechaFin: Date;
     habitacion: string;
     tipo: string;
+    token: number;
 }

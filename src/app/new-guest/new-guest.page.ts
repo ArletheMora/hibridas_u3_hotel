@@ -138,7 +138,8 @@ export class NewGuestPage implements OnInit {
           fechaInicio: this.newDate(this.myForm.get('fechaInicio').value),
           fechaFin: this.newDate(this.myForm.get('fechaFin').value),
           habitacion: this.myForm.get('room').value,
-          tipo: 'guest'
+          tipo: 'guest',
+          token: this.personService.getToken()
         }
         this.personService.addPerson(g)
         let r: Room = this.rS.getFreeRoomByCode(this.myForm.get('room').value)
@@ -149,7 +150,7 @@ export class NewGuestPage implements OnInit {
         });
         toast.present();
         this.myForm.reset();
-        this.r.navigate(['']);
+        this.r.navigate(['/guest-list']);
       }
     }
   }

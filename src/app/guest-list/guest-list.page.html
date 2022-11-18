@@ -15,11 +15,11 @@
               Ver</ion-item-option>
           </ion-item-options>
 
-          <ion-item class=""  href="{{url}}{{huesped.phone}}{{token}}">
+          <ion-item class=""  href="{{url}}{{huesped.phone}}{{token}}{{huesped.token}}">
             <ion-label>{{huesped.name}} </ion-label><br /><br />
             <ion-label>{{huesped.phone}} </ion-label><br /><br />
-            <ion-label>{{huesped.fechaInicio}} </ion-label><br /><br />
-            <ion-label>{{huesped.fechaFin}} </ion-label><br /><br />
+            <ion-label>{{huesped.fechaInicio.toDateString()}} </ion-label><br /><br />
+            <ion-label>{{huesped.fechaFin.toDateString()}} </ion-label><br /><br />
             <ion-label>{{huesped.habitacion}} </ion-label><br /><br />
           </ion-item>
 

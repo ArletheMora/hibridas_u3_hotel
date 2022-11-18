@@ -3,11 +3,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'dsgvs',
+    path: 'guest-page',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'login',
+    path: '',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./new-guest/new-guest.module').then( m => m.NewGuestPageModule)
   },
   {
-    path: '',//guest-list
+    path: 'guest-list',
     loadChildren: () => import('./guest-list/guest-list.module').then( m => m.GuestListPageModule)
   }
 ];

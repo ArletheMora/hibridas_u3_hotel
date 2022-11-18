@@ -17,6 +17,7 @@ export class PersonService {
         fechaFin: new Date(),
         habitacion: '',
         tipo: 'admin',
+        token: 10000
       },
       {
         id: 2,
@@ -26,6 +27,7 @@ export class PersonService {
         fechaFin: new Date(),
         habitacion: 'A1',
         tipo: 'guest',
+        token: 10001
       },
       {
         id: 3,
@@ -35,6 +37,7 @@ export class PersonService {
         fechaFin: new Date(),
         habitacion: 'A2',
         tipo: 'guest',
+        token: 10002
       },
       {
         id: 4,
@@ -44,6 +47,7 @@ export class PersonService {
         fechaFin: new Date(),
         habitacion: 'A3',
         tipo: 'guest',
+        token: 10003
       },
     ];
   }
@@ -67,5 +71,19 @@ export class PersonService {
 
   public getID(): number {
     return this.people[this.people.length-1].id + 1;
+  }
+
+  public getToken(): number {
+    return this.people[this.people.length-1].token + 1;
+  }
+
+  public getGuestByPhoneNumber(pn: string): Person{
+    let item: Person;
+    item = this.people.find(
+      (guest) => {
+        return guest.phone===pn
+      }
+    );
+    return item
   }
 }
