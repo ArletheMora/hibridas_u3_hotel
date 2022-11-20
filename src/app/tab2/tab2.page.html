@@ -52,7 +52,8 @@
             únicamente por personal del hotel.</h2>
         <h2>ENTRADA:</h2>
         <h2>La hora de registro para entrar a la habitación será de las 15:00 horas 
-            en adelante</h2>
+            en adelante.</h2>
+            <h2>Recuerde liquidar el monto restante: {{montoRestante}}</h2>
         <h2>SALIDA:</h2>
         <h2>La hora de salida deberá ser a más tardar a las 12:00 horas, 
             caso contrario se cobrará una noche adicional de estadía. Para el caso de 
@@ -67,6 +68,7 @@
       <!--------------------------------------------------------------------------------------------->
 
       <ng-container *ngIf="seleccion=='2'">
+        <h1 style="color:cornflowerblue">Welcome {{person.name}}</h1>
         <h1>LOCATION</h1>
         <div class="slider-container">  
           <img
@@ -94,7 +96,8 @@
             only by hotel staff.</h2>
         <h2>INPUT:</h2>
         <h2>The check-in time to enter the room will be at 3:00 p.m.
-            onwards</h2>
+            onwards.</h2>
+        <h2>Remember to pay the remaining amount: {{montoRestante}}</h2>
         <h2>OUTPUT:</h2>
         <h2>The departure time must be no later than 12:00,
             Otherwise, an additional night's stay will be charged. In the case of
@@ -109,6 +112,7 @@
       <!--------------------------------------------------------------------------------------->
 
       <ng-container *ngIf="seleccion=='3'">
+        <h1 style="color:cornflowerblue">Bienvenue {{person.name}}</h1>
         <h1>EMPLACEMENT</h1>
         <div class="slider-container">  
           <img
@@ -136,7 +140,8 @@
             uniquement par le personnel de l'hôtel.</h2>
         <h2>ENTRÉE :</h2>
         <h2>L'heure d'enregistrement pour entrer dans la chambre sera à 15h00.
-            à partir de</h2>
+            à partir de.</h2>
+        <h2>N'oubliez pas de payer le montant restant : {{montoRestante}}</h2>
         <h2>SORTIE :</h2>
         <h2>L'heure de départ doit être au plus tard à 12h00,
             Dans le cas contraire, une nuit supplémentaire sera facturée. Dans le cas de

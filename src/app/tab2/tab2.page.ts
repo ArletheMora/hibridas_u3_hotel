@@ -15,6 +15,7 @@ export class Tab2Page implements OnInit {
   public seleccion: string;
   public person: Person;
   public room: Room;
+  public montoRestante: number;
 
   constructor(
     private PersonService: PersonService,
@@ -36,6 +37,11 @@ export class Tab2Page implements OnInit {
 
   getRoom(){
     this.room = this.roomService.getOccupiedRoomByCode(this.person.habitacion);
-  }  
+    this.getMontoRestante();
+  }
+
+  getMontoRestante(){
+    this.montoRestante = this.room.price - this.person.pay;
+  }
 
 }
