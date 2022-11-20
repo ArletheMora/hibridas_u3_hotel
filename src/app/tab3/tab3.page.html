@@ -13,7 +13,13 @@
   
   <div id="container">
     <form >
+      <ion-select placeholder="Idioma"  id="categoria" name="categoria"  (ionChange)="obtenerValor($event)">
+        <ion-select-option value="1">Español</ion-select-option>
+        <ion-select-option value="2">Ingles</ion-select-option>
+        <ion-select-option value="3">Frances</ion-select-option>
+      </ion-select>
       <div class="formulario">
+        <ng-container *ngIf="seleccion=='1'">
         <ion-accordion-group>
           <ion-accordion value="first">
             <ion-item slot="header" color="light">
@@ -112,7 +118,216 @@
             </div>
           </ion-accordion>
         </ion-accordion-group>
+      </ng-container>
+
+      <!------------------------------------------------------------------------------->
+
+      <ng-container *ngIf="seleccion=='2'">
+        <ion-accordion-group>
+          <ion-accordion value="first">
+            <ion-item slot="header" color="light">
+              <ion-label>Water skiing</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <img src="/assets/images/EsquiAcuatico.jpg">
+              <h2>(includes donut and banana, it is for 4-5 people)
+                  Activity that mixes surfing and skiing. This sport in which high speeds are reached,
+                  requires good reflexes and balance. You will be on the water holding a rope pulled by a
+                  powerful boat, performing spectacular maneuvers.</h2>
+            </div>
+          </ion-accordion>
+          <ion-accordion value="second">
+            <ion-item slot="header" color="light">
+              <ion-label>rappelling</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <img src="/assets/images/rapel.jpg">
+              <h2>(Waterfalls of the Real de Acuitapilco community) With a harness, a rope and a descender, you will be able to
+                descend safely down a vertical wall, avoiding a precipice accompanied by the
+                waterfall of the "La Silla" waterfall.</h2>
+            </div>
+          </ion-accordion>
+          <ion-accordion value="third">
+            <ion-item slot="header" color="light">
+              <ion-label>Kayaking</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <img src="/assets/images/kayaking.jpg">
+              <h2>​The Santa María del Oro Lagoon, due to its tranquility, offers us the possibility of using a
+                  two-blade paddle and, of course, a kayak, for sure.
+                  Don't worry if it's your first time, it's very easy! Enjoy its landscapes and the
+                  tranquility of its waters. We offer you a most exciting tour, you should not
+                  worry about nothing, just enjoy.</h2>
+            </div>
+          </ion-accordion>
+          <ion-accordion value="fourd">
+            <ion-item slot="header" color="light">
+              <ion-label>Huichol ceremony</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <img src="/assets/images/ceremonia.jpg">
+              <h2>Witness an adventure that you will not be able to forget within our facilities. we will enter
+                  To a world few have entered. The perfect combination between nature, the
+                  mysticism of the lagoon and the Huichol culture at its best, enjoying spectacular
+                  landscapes coexisting with a culture that manifests its way of seeing the world through its clothing,
+                  traditions, gastronomy and crafts. This adventure includes:</h2>
+              <h2>1.-Fire ritual</h2>
+              <h2>2.-Clean energy with the Marakame</h2>
+              <h2>3.-Huichol art making workshop</h2>
+              <h2>4.-Pilgrimage through the Hotel facilities</h2>
+              <h2>5.-Healing and releasing bad vibes</h2>
+              <h2>6.-Atmosphere with native music.</h2><br><br><br>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-row>
+          <ion-label id="headerTitle" align-self-end>HISTORY</ion-label>  
+        </ion-row>
+        <ion-accordion-group>
+          <ion-accordion value="second">
+            <ion-item slot="header" color="light">
+              <ion-label>SAMAO</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <h2>The lagoon of Santa María del Oro is an icon of the state of Nayarit due to its mysticism, its
+                  legend, for the pure air and the nature that surrounds it.</h2>
+              <h2>Legend says that in a town
+                  old name Michiztlán lived a king who had a beautiful daughter. the girl fell in love
+                  of a young man from the enemy town. When the king found out about this, he was enraged and commanded
+                  the soldiers of him to tie the young people to a post. Seeing yourself so close but at the same time so
+                  Far away, the lovers wept non-stop for days until they formed the lagoon.</h2>
+              <img src="/assets/images/samao.webp">
+              <h2>The lagoon measures almost 2.25 kilometers long by 1.2 km wide and is inside a crater
+                  volcanic that was formed by the fall of a meteorite thousands of years ago. That impact crossed
+                  deep layers of earth giving a depth to the lagoon of 60 meters.</h2>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-row>
+          <ion-label id="headerTitle" align-self-end>EMERGENCY NUMBERS</ion-label>  
+        </ion-row>
+        <ion-accordion-group>
+          <ion-accordion value="second">
+            <ion-item slot="header" color="light">
+              <ion-label>Information</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+               <h1>Red Cross: 213-11-60</h1>
+               <h1>Firefighters: 213-16-07, 213-18-09</h1>
+               <h1>ISSTE: 213-12-95</h1>
+               <h1>IMSS: 212-38-38</h1>
+               <h1>Emergencies: 066</h1>
+               <h1>Tepic Municipal Police: 214-61-68</h1><br><br><br>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ng-container>
+
+      <!-------------------------------------------------------------------------------------------->
+
+      <ng-container *ngIf="seleccion=='3'">
+        <ion-accordion-group>
+          <ion-accordion value="first">
+            <ion-item slot="header" color="light">
+              <ion-label>Ski nautique</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <img src="/assets/images/EsquiAcuatico.jpg">
+              <h2>(comprend le beignet et la banane, c'est pour 4-5 personnes)
+                  Activité qui mêle surf et ski. Ce sport où l'on atteint des vitesses élevées,
+                  demande de bons réflexes et de l'équilibre. Vous serez sur l'eau tenant une corde tirée par un
+                  bateau puissant, effectuant des manœuvres spectaculaires.</h2>
+            </div>
+          </ion-accordion>
+          <ion-accordion value="second">
+            <ion-item slot="header" color="light">
+              <ion-label>descente en rappel</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <img src="/assets/images/rapel.jpg">
+              <h2>(Cascades de la communauté Real de Acuitapilco) Avec un baudrier, une corde et un descendeur, vous pourrez
+                  descendre en toute sécurité le long d'un mur vertical en évitant un précipice accompagné de la
+                  cascade de la cascade "La Silla".</h2>
+            </div>
+          </ion-accordion>
+          <ion-accordion value="third">
+            <ion-item slot="header" color="light">
+              <ion-label>kayak</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <img src="/assets/images/kayaking.jpg">
+              <h2>​La lagune de Santa María del Oro, en raison de sa tranquillité, nous offre la possibilité d'utiliser un
+                  pagaie à deux pales et, bien sûr, un kayak, bien sûr.
+                  Ne vous inquiétez pas si c'est votre première fois, c'est très facile ! Profitez de ses paysages et de la
+                  tranquillité de ses eaux. Nous vous proposons une visite des plus excitantes, vous ne devriez pas
+                  ne vous souciez de rien, profitez simplement.</h2>
+            </div>
+          </ion-accordion>
+          <ion-accordion value="fourd">
+            <ion-item slot="header" color="light">
+              <ion-label>Cérémonie huichol</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <img src="/assets/images/ceremonia.jpg">
+              <h2> Assistez à une aventure que vous ne pourrez pas oublier au sein de nos installations. nous entrerons
+                  Dans un monde que peu sont entrés. La combinaison parfaite entre la nature, la
+                  mysticisme de la lagune et la culture Huichol à son meilleur, profitant de spectaculaires
+                  des paysages coexistant avec une culture qui manifeste sa façon de voir le monde à travers ses vêtements,
+                  traditions, gastronomie et artisanat. Cette aventure comprend :</h2>
+              <h2>1.-Rituel du feu</h2>
+              <h2>2.-L'énergie propre avec le Marakame</h2>
+              <h2>3.-Atelier de fabrication d'art Huichol</h2>
+              <h2>4.-Pèlerinage à travers les installations de l'hôtel</h2>
+              <h2>5.- Guérir et libérer les mauvaises vibrations</h2>
+              <h2>6.-Ambiance avec musique indigène.</h2><br><br><br>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-row>
+          <ion-label id="headerTitle" align-self-end>L'HISTOIRE</ion-label>  
+        </ion-row>
+        <ion-accordion-group>
+          <ion-accordion value="second">
+            <ion-item slot="header" color="light">
+              <ion-label>SAMAO</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <h2>La lagune de Santa María del Oro est une icône de l'état de Nayarit en raison de son mysticisme, de son
+                  légende, pour l'air pur et la nature qui l'entoure.</h2>
+              <h2>La légende dit que dans une ville
+                  ancien nom Michiztlán vivait un roi qui avait une belle fille. la fille est tombée amoureuse
+                  d'un jeune homme de la ville ennemie. Quand le roi apprit cela, il fut furieux et ordonna
+                  ses soldats pour attacher les jeunes gens à un poteau. Te voir si proche mais en même temps si
+                  Au loin, les amants ont pleuré sans arrêt pendant des jours jusqu'à ce qu'ils forment le lagon.</h2>
+              <img src="/assets/images/samao.webp">
+              <h2>Le lagon mesure près de 2,25 km de long sur 1,2 km de large et se trouve à l'intérieur d'un cratère
+                  volcanique formée par la chute d'une météorite il y a des milliers d'années.
+                  couches profondes de terre donnant une profondeur au lagon de 60 mètres.</h2>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+        <ion-row>
+          <ion-label id="headerTitle" align-self-end>NUMÉROS D'URGENCE</ion-label>  
+        </ion-row>
+        <ion-accordion-group>
+          <ion-accordion value="second">
+            <ion-item slot="header" color="light">
+              <ion-label>Informations</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+               <h1>Croix Rouge : 213-11-60</h1>
+               <h1>Pompiers : 213-16-07, 213-18-09</h1>
+               <h1>ISSTE : 213-12-95</h1>
+               <h1>IMSS : 212-38-38</h1>
+               <h1>Urgences : 066</h1>
+               <h1>Police municipale de Tepic : 214-61-68</h1><br><br><br>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ng-container>
+
       </div>
     </form>
   </div>
 </ion-content>
+ 

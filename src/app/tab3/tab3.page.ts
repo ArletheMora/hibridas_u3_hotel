@@ -8,7 +8,15 @@ import { Component, ViewChild } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
+  seleccion:string
 
   constructor() {}
+
+  obtenerValor(e){
+    console.log(e.detail.value)
+     //this.categoria = e.detail.value;
+     
+     this.seleccion=e.detail.value;
+    }
 
 }
