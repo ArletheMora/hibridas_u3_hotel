@@ -13,7 +13,13 @@
   
   <div id="container">
     <form >
+      <ion-select placeholder="Idioma"  id="categoria" name="categoria"  (ionChange)="obtenerValor($event)">
+         <ion-select-option value="1">Español</ion-select-option>
+         <ion-select-option value="2">Ingles</ion-select-option>
+         <ion-select-option value="3">Frances</ion-select-option>
+      </ion-select>
       <div class="formulario">
+        <ng-container *ngIf="seleccion=='1'">
         <h1>REGISTRO</h1>
         <h2>Todo huésped, tanto el individual como el de grupo deberá de proporcionar la información necesaria 
             para realizar el registro. Dicha informacion sera registrada en la aplicacion del hotel por el administrador. </h2>
@@ -119,7 +125,228 @@
         <h2>Se da por entendido que al momento de hacer efectiva la reserva, el cliente y/o huésped conoce y manifiesta 
             expresa y tácitamente que acepta en su totalidad el presente reglamento interno del Hotel, estando 
             conforme y de acuerdo con todos los puntos antes mencionados.</h2><br><br><br>
-      </div>
+        </ng-container>
+        
+        <!------------------------------------------------------------------------------------>   
+        
+        <ng-container *ngIf="seleccion=='2'">
+            <h1>REGISTRATION</h1>
+            <h2>Every guest, both individual and group, must provide the necessary information to register. Said information will be registered in the hotel application by the administrator. </h2>
+            <img src="/assets/images/registro.png">
+            <h1>INFORMATION BY THE GUEST</h1>
+            <h2>It is the obligation of the guests to inform the administration
+                of the Hotel of illnesses or contagious diseases, deaths,
+                infractions or crimes that occur in the establishment and are of
+                your knowledge, so that the Hotel can, in turn, take the
+                appropriate measures and report immediately to the authority when appropriate.
+                If a guest falls ill, the hotel reception must call a
+                doctor and may be cared for in your room at the expense of the guest; yes the
+                If the disease is contagious, the guest will be transferred on his own to the appropriate place.</h2>
+            <img src="/assets/images/informacin.png">
+            <h1>GUEST REGISTRATION TO THE HOTEL</h1>
+            <h2>The check-in time to enter the room will be at 3:00 p.m.
+                onwards, and the departure time must be no later than 12:00 p.m.,
+                Otherwise, an additional night's stay will be charged. In the case of
+                that for personal reasons the guest has to register his entrance after
+                from 8:00 p.m. This must notify 24 hours in advance of your arrival
+                We recommend that upon arrival you review the inventory of the room, since at
+                time of withdrawal will be reviewed and in case of shortages or damage must be
+                covered by the guest for another product that is the same or failing that, it will be charged at its price.</h2>
+            <h1>USE OF THE SERVICES</h1>
+            <h2>The services (water, electricity, gas, etc.) provided by the Hotel must be used
+                in accordance with the rules of good faith, without understanding included in the price the
+                waste or disproportionate use of them, help us keep the rates low
+                and accessible as well as caring for the environment.
+                Guests are asked to use the furniture in the room in a moderate and rational way, taking care
+                of them duly; In the same way, every guest, when leaving the room, has the obligation
+                to leave the windows closed, entrance doors, water faucets and turn off lights.</h2>
+            <img src="/assets/images/servicio.png">
+            <h1>STAY AT THE HOTEL</h1>
+            <h2>Guests can take with them or leave at the reception or administration, the keys of their
+                rooms until before 8:00 p.m., each time they leave the establishment. They wont be able
+                accommodate people other than those registered in their rooms and in any case, they will notify
+                in the administration of any variation in the number or identification of persons
+                that were originally registered. Customer visitors will not be able to stay over the
+                night. Neither can people other than those who have made the services come to enjoy the services.
+                contracting, nor can the Hotel be used as a place to carry out transactions
+                mercantile.
+                In no case, the number of people staying in each room may be greater than the
+                capacity assigned by the Hotel to each room.</h2>
+            <h1>HOTEL ACCESS</h1>
+            <h2>The Hotel will be open to the public from 8:00 a.m. to 9:30 p.m., if the guest wishes
+                enter or leave after 9:30 p.m., then he must ring the doorbell
+                major. The access door to the hotel after 9:30 p.m. will be opened and closed
+                only by hotel staff.</h2>
+            <img src="/assets/images/acceso.png">
+            <h1> ROOM CLEANING</h1>
+            <h2>Room cleaning will take place in the morning, from 9:00 a.m. to 12:00 p.m.
+                hours. Customers who do not make their rooms available during those hours will not be
+                They will clean the room. Both individual and group guests are informed,
+                that in this establishment the whites of the room are changed every third night of stay
+                for the same client.</h2>
+            <img src="/assets/images/limpieza.png">
+            <h1> SECURITY MEASURES</h1>
+            <h2>The guest must keep their valuables out of the reach of anyone. If you have
+                any valuables, the hotel is not responsible for loss or misplacement of jewelry and valuables
+                left in the rooms.</h2>
+            <img src="/assets/images/seguridad.png">
+            <h1> SILENCE AND RESPECT FOR THE REST OF THE CUSTOMERS AND HOTEL STAFF</h1>
+            <h2>From 10:00 p.m. in all rooms the acoustic volume must be moderated. Also respect
+                the nocturnal silence in the corridors and on the stairs. From 24:00 hours, the
+                guests absolute silence. Any annoying performance should be avoided, for the rest of the
+                hotel guests.</h2>
+            <img src="/assets/images/respeto.png">
+            <h1> DAMAGE, DIRT, LOSS OF KEYS</h1>
+            <h2>In case of damaging the hotel property or furniture, as well as losing the keys, it is the
+                causer who pays for the damage caused. Payments of this type are made immediately and in
+                cash (in the case of groups, the person in charge is the organizer and/or representative, so
+                it will be he who must advance the amount). Theft or intentional damage will be reported
+                immediately to the police. It is prohibited to execute any act that causes damages or losses
+                to the Hotel or to other guests, or conduct contrary to decorum or social behavior.</h2>
+            <img src="/assets/images/dañar.png">
+            <h1> ACCIDENTS OR EVENTS WITHIN THE HOTEL</h1>
+            <h2>The hotel is not responsible for any type of accident and/or event that the guest suffers within
+                hotel facilities such as falls, blows, animal bites, among others. Expenses
+                caused by this accident or event will be borne by the guest, exempting the hotel from any
+                legal liability.</h2>
+            <img src="/assets/images/accidente.webp">
+            <h1>PARKING LOT</h1>
+            <h2>The Hotel has parking available at an additional cost, an amount that is provided
+                at reception.</h2>
+                <img src="/assets/images/estacionamiento.png">
+            <h1>PROHIBITIONS</h1>
+            <h2>1.- The consumption of toxic drugs, narcotics or psychotropic substances is prohibited, within
+                any area of the hotel, this infraction will be reported immediately to the authorities
+                corresponding.</h2>
+            <h2>2.- It is prohibited to alter the order or cause inconvenience to other users within the establishment,
+                use electrical current and mechanical equipment installed in the rooms for purposes other than
+                They are not for whom they are intended.</h2>
+            <img src="/assets/images/prohibido.webp">
+            <h1>BREACH OF HOTEL RULES</h1>
+            <h2>In case of violation of one or more of the aforementioned conditions and/or prohibitions, the Hotel
+                You have the right to immediately terminate the accommodation contract. The customer is equally
+                obliged to pay for all the days of accommodation fixed in the reservation.
+                The rights of the establishment as well as the guests to report to the authorities are protected
+                competent the facts that constitute an illegal act or that give rise to responsibility for any of
+                the parties in their persons and property, as long as they occur within the hotel.</h2>
+                <img src="/assets/images/incumplir.png">
+            <h1>IMPORTANT:</h1>
+            <h2>It is understood that at the time of making the reservation effective, the client and/or guest knows and expresses
+                expressly and tacitly accepts in its entirety the present internal regulations of the Hotel, being
+                conforming and agreeing with all the aforementioned points.</h2><br><br><br>
+            </ng-container>
+
+            <!----------------------------------------------------------------------------------------->
+            
+            <ng-container *ngIf="seleccion=='3'">
+                <h1>ENREGISTREMENT</h1>
+                <h2>Chaque invité, individuel et de groupe, doit fournir les informations nécessaires
+                    enregistrer. Ces informations seront enregistrées dans l'application de l'hôtel par l'administrateur. </h2>
+                <img src="/assets/images/registro.png">
+                <h1>INFORMATION PAR LE CLIENT</h1>
+                <h2>Il est de l'obligation des clients d'informer l'administration
+                    de l'Hôtel des maladies ou maladies contagieuses, décès,
+                    infractions ou crimes qui se produisent dans l'établissement et qui sont
+                    vos connaissances, afin que l'Hôtel puisse, à son tour, prendre le
+                    mesures appropriées et signaler immédiatement à l'autorité le cas échéant.
+                    Si un client tombe malade, la réception de l'hôtel doit appeler un
+                    médecin et peut être soigné dans votre chambre aux frais du client ; Oui le
+                    Si la maladie est contagieuse, le client sera transféré par ses propres moyens à l'endroit approprié.</h2>
+                <img src="/assets/images/informacin.png">
+                <h1>INSCRIPTION DES INVITÉS À L'HÔTEL</h1>
+                <h2>L'heure d'enregistrement pour entrer dans la chambre sera à 15h00.
+                    à partir de, et l'heure de départ doit être au plus tard à 12h00,
+                    Dans le cas contraire, une nuit supplémentaire sera facturée. Dans le cas de
+                    que pour des raisons personnelles, le client doit enregistrer son entrée après
+                    à partir de 20h00 Cela doit prévenir 24 heures à l'avance de votre arrivée
+                    Nous vous recommandons à votre arrivée de vérifier l'état des lieux de la chambre, car à
+                    le moment du retrait sera revu et en cas de pénurie ou de dommage doit être
+                    couvert par le client pour un autre produit identique ou à défaut, il sera facturé à son prix.</h2>
+                <h1>UTILISATION DES SERVICES</h1>
+                <h2>Les services (eau, électricité, gaz, etc.) fournis par l'Hôtel doivent être utilisés
+                    conformément aux règles de bonne foi, sans comprendre inclus dans le prix le
+                    gaspillage ou utilisation disproportionnée de ceux-ci, aidez-nous à maintenir les tarifs bas
+                    et accessible tout en respectant l'environnement.
+                    Les clients sont priés d'utiliser les meubles de la chambre de manière modérée et rationnelle, en prenant soin
+                    d'eux dûment; De même, chaque client, en quittant la chambre, a l'obligation
+                    laisser les fenêtres fermées, les portes d'entrée, les robinets d'eau et éteindre les lumières.</h2>
+                <img src="/assets/images/servicio.png">
+                <h1>RESTE À L'HOTEL</h1>
+                <h2>Les clients peuvent emporter avec eux ou laisser à la réception ou à l'administration, les clés de leur
+                    chambres jusqu'à 20h00, chaque fois qu'ils quittent l'établissement. Ils ne pourront pas
+                    accueillir des personnes autres que celles inscrites dans leurs chambres et dans tous les cas, ils aviseront
+                    dans l'administration de toute variation du nombre ou de l'identification des personnes
+                    qui ont été enregistrés à l'origine. Les visiteurs clients ne pourront pas rester au-delà de la
+                    nuit. Des personnes autres que celles qui ont rendu les services ne peuvent pas non plus venir profiter des services.
+                    contracter, ni l'Hôtel ne peut être utilisé comme un lieu pour effectuer des transactions
+                    mercantile.
+                    En aucun cas, le nombre de personnes séjournant dans chaque chambre ne pourra être supérieur au
+                    capacité attribuée par l'Hôtel à chaque chambre.</h2>
+                <h1>ACCÈS À L'HÔTEL</h1>
+                <h2>L'hôtel sera ouvert au public de 8h00 à 21h30, si le client le souhaite
+                    entrer ou sortir après 21h30, alors il doit sonner à la porte
+                    Majeur. La porte d'accès à l'hôtel après 21h30 sera ouverte et fermée
+                    uniquement par le personnel de l'hôtel.</h2>
+                <img src="/assets/images/acceso.png">
+                <h1> NETTOYAGE DE LA CHAMBRE</h1>
+                <h2>Le nettoyage des chambres aura lieu le matin, de 9h00 à 12h00.
+                    Heures. Les clients qui ne mettent pas leur chambre à disposition pendant ces horaires ne seront pas
+                    Ils nettoieront la chambre. Les clients individuels et de groupe sont informés,
+                    que dans cet établissement les blancs de la chambre sont changés tous les trois soirs de séjour
+                    pour le même client.</h2>
+                <img src="/assets/images/limpieza.png">
+                <h1> MESURE DE SÉCURITÉ</h1>
+                <h2>Le client doit garder ses objets de valeur hors de portée de quiconque. Si tu as
+                    des objets de valeur, l'hôtel n'est pas responsable de la perte ou de l'égarement de bijoux et d'objets de valeur
+                    laissés dans les chambres.</h2>
+                <img src="/assets/images/seguridad.png">
+                <h1> SILENCE ET RESPECT DU RESTE DES CLIENTS ET DU PERSONNEL DE L'HOTEL</h1>
+                <h2>A partir de 22h00 dans toutes les salles le volume acoustique doit être modéré. Respecte aussi
+                    le silence nocturne dans les couloirs et dans les escaliers. A partir de 24h00, le
+                    silence absolu des invités. Toute performance ennuyeuse doit être évitée, pour le reste de la
+                    Personnes logeant à l'hotel.</h2>
+                <img src="/assets/images/respeto.png">
+                <h1> DOMMAGES, SALETES, PERTE DE CLES</h1>
+                <h2>En cas d'endommagement de la propriété ou du mobilier de l'hôtel, ainsi que de la perte des clés, c'est le
+                    responsable qui paie pour les dommages causés. Les paiements de ce type sont effectués immédiatement et en
+                    espèces (dans le cas de groupes, le responsable est l'organisateur et/ou son représentant,
+                    ce sera lui qui devra avancer la somme). Le vol ou les dommages intentionnels seront signalés
+                    immédiatement à la police. Il est interdit d'accomplir tout acte qui cause des dommages ou des pertes
+                    à l'hôtel ou à d'autres clients, ou conduite contraire à la bienséance ou au comportement social.</h2>
+                <img src="/assets/images/dañar.png">
+                <h1> ACCIDENTS OU ÉVÉNEMENTS AU SEIN DE L'HÔTEL</h1>
+                <h2>L'hôtel n'est pas responsable de tout type d'accident et/ou d'événement que le client subit dans
+                    installations hôtelières telles que chutes, coups, morsures d'animaux, entre autres. Les dépenses
+                    causés par cet accident ou événement seront à la charge du client, exonérant l'hôtel de tout
+                    responsabilité juridique.</h2>
+                <img src="/assets/images/accidente.webp">
+                <h1>TERRAIN DE STATIONNEMENT</h1>
+                <h2>L'hôtel dispose d'un parking disponible moyennant des frais supplémentaires, un montant qui est fourni
+                    à la reception.</h2>
+                    <img src="/assets/images/estacionamiento.png">
+                <h1>PROHIBICIONES</h1>
+                <h2>1.- La consommation de drogues toxiques, de stupéfiants ou de substances psychotropes est interdite, dans
+                    n'importe quelle zone de l'hôtel, cette infraction sera signalée immédiatement aux autorités
+                    correspondant.</h2>
+                <h2>2.- Il est interdit de modifier la commande ou de causer des désagréments aux autres utilisateurs au sein de l'établissement,
+                    utiliser le courant électrique et les équipements mécaniques installés dans les locaux à des fins autres que
+                    Ils ne sont pas à qui ils sont destinés.</h2>
+                <img src="/assets/images/prohibido.webp">
+                <h1>VIOLATION DES RÈGLES DE L'HÔTEL</h1>
+                <h2>En cas de violation d'une ou plusieurs des conditions et/ou interdictions précitées, l'Hôtel
+                    Vous avez le droit de résilier immédiatement le contrat d'hébergement. Le client est également
+                    obligé de payer tous les jours d'hébergement fixés dans la réservation.
+                    Les droits de l'établissement ainsi que des clients à se présenter aux autorités sont protégés
+                    compétent les faits qui constituent un acte illégal ou qui engagent la responsabilité de l'un des
+                    les parties en leurs personnes et biens, tant qu'elles se déroulent dans l'enceinte de l'hôtel.</h2>
+                    <img src="/assets/images/incumplir.png">
+                <h1>IMPORTANT :</h1>
+                <h2>Il est entendu qu'au moment de la réservation effective, le client et/ou l'invité sait et exprime
+                        accepte expressément et tacitement dans son intégralité le présent règlement intérieur de l'Hôtel, étant
+                        se conformer et être d'accord avec tous les points susmentionnés.</h2><br><br><br>
+                </ng-container>
+
+        </div>
     </form>
   </div>
 </ion-content>

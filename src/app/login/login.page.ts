@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
     private rS: RoomService,
     private fB: FormBuilder
   ) { }
-
+ 
   ngOnInit() {
     this.myForm = this.fB.group({
       phone: [
