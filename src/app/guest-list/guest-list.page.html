@@ -9,7 +9,8 @@
     <ion-col>
       <ion-list>
         <ion-item-sliding *ngFor="let huesped of huespedes" >
-          <ion-item-options side="start">
+
+          <ion-item-options side="start" (ionSwipe)="getGuest(huesped.phone)">
             <ion-item-option color="primary">
               <ion-icon slot="bottom" name="eye"></ion-icon>
               Ver</ion-item-option>

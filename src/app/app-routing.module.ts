@@ -41,7 +41,11 @@ const routes: Routes = [
   {
     path: 'guest-list',
     loadChildren: () => import('./guest-list/guest-list.module').then( m => m.GuestListPageModule)
+  },  {
+    path: 'guest',
+    loadChildren: () => import('./guest/guest.module').then( m => m.GuestPageModule)
   }
+
 ];
 @NgModule({
   imports: [
