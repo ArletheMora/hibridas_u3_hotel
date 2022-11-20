@@ -26,7 +26,6 @@ export class Tab2Page implements OnInit {
   ngOnInit(){
     this.activatedRoute.queryParams.subscribe( (params) => {
       this.person = this.PersonService.getGuestByPhoneNumber(params.phoneNumber);
-      console.log(this.person);
     })
   }
 
@@ -42,6 +41,16 @@ export class Tab2Page implements OnInit {
 
   getMontoRestante(){
     this.montoRestante = this.room.price - this.person.pay;
+  }
+
+  tokenAvailable(): boolean{
+    let fechaActual = new Date();
+    let fechaIngreso = this.person.fechaInicio;
+    let fechaSalida = this.person.fechaFin;
+    let valido = fechaActual >= fechaIngreso && fechaActual <= fechaSalida ? true : false;
+    console.log(valido);
+    
+    return valido;
   }
 
 }

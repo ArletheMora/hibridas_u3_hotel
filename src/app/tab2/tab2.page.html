@@ -61,7 +61,7 @@
             de las 20:00 horas este deberá de avisar con 24 horas de anticipación a su llegada</h2>
         <h1>CAJA DE SEGURIDAD</h1>
         <h2>Una vez realizado el registro, el recepcionista le dara a conocer la ubicación de la caja de seguridad
-            dentro de la cual se encuentra la llave, para acceder a la caja de seguridad debera ingresar el codigo: <b style="color: RED;">{{room.enterCode}}</b>.
+            dentro de la cual se encuentra la llave<ng-container *ngIf="tokenAvailable()">, para acceder a la caja de seguridad debera ingresar el codigo: <b style="color: RED;">{{room.enterCode}}</b></ng-container>.
         </h2><br><br><br>
       </ng-container>
 
