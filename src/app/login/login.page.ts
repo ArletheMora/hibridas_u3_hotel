@@ -94,7 +94,12 @@ export class LoginPage implements OnInit {
     }
     if (this.myForm.valid) {
       if (this.reservaValida()) {
-        this.r.navigate(['/tabs/tab2'], {})
+        console.log(this.myForm.get('phone').value);
+        this.r.navigate(['/tabs/tab2'], {
+          queryParams: {
+            phoneNumber: this.myForm.get('phone').value
+          }
+        })
         this.myForm.reset()
       } else {
         let toast = await this.tC.create({

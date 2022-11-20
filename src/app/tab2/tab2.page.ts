@@ -1,21 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RoomService } from './../services/room.service';
+import { PersonService } from './../services/person.service';
+import { Room } from './../models/room';
+import { Person } from './../models/person';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
-  seleccion:string
+export class Tab2Page implements OnInit {
+  
+  public seleccion: string;
+  public person: Person;
+  public room: Room;
 
-  constructor() {}
+  constructor(
+    private PersonService: PersonService,
+    private roomService: RoomService,
+    private activatedRoute: ActivatedRoute
+  ) {}
+
+  ngOnInit(){
+    this.activatedRoute.queryParams.subscribe( (params) => {
+      this.person = this.PersonService.getGuestByPhoneNumber(params.phoneNumber);
+      console.log(this.person);
+    })
+  }
 
   obtenerValor(e){
-    console.log(e.detail.value)
-     //this.categoria = e.detail.value;
-     
-     this.seleccion=e.detail.value;
-    }
+    this.seleccion=e.detail.value;
+    this.getRoom();
+  }
 
+  getRoom(){
+    this.room = this.roomService.getOccupiedRoomByCode(this.person.habitacion);
+  }  
 
 }

@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-row>
       <ion-img id="headerLogo" src="/assets/images/logo.png" size="xs"></ion-img>
       <ion-label id="headerTitle" align-self-end>INFORMACION DE INGRESO</ion-label>  
@@ -21,6 +24,7 @@
 
       <div class="formulario">
         <ng-container *ngIf="seleccion=='1'">
+        <h1 style="color:cornflowerblue">Bienvenido {{person.name}}</h1>
         <h1>UBICACION</h1>
         <div class="slider-container">  
           <img
@@ -56,9 +60,7 @@
             de las 20:00 horas este deberá de avisar con 24 horas de anticipación a su llegada</h2>
         <h1>CAJA DE SEGURIDAD</h1>
         <h2>Una vez realizado el registro, el recepcionista le dara a conocer la ubicación de la caja de seguridad
-            dentro de la cual se encuentra la llave que contiene el codigo que esta ligado a su habitacion.
-            Unicamente tendran acceso a dicha caja el huésped que realizo el registro. Ademas la caja es exclusiva
-            de cada huésped.
+            dentro de la cual se encuentra la llave, para acceder a la caja de seguridad debera ingresar el codigo: <b style="color: RED;">{{room.enterCode}}</b>.
         </h2><br><br><br>
       </ng-container>
 
@@ -99,11 +101,9 @@
             that for personal reasons the guest has to register his entrance after
             after 8:00 p.m., they must notify 24 hours in advance of their arrival</h2>
         <h1>SAFE BOX</h1>
-        <h2>Once you have registered, the receptionist will let you know the location of the safe deposit box
-            within which is the key that contains the code that is linked to his room.
-            Only the guest who made the registration will have access to said box. Also the box is exclusive
-            of each guest.
-      </h2><br><br><br>
+        <h2>Once you have registered, the receptionist will let you know the location of the safe
+          inside which the key is located, to access the safe you must enter the code: <b style="color: RED;">{{room.enterCode}}</b>.
+        </h2><br><br><br>
       </ng-container>
 
       <!--------------------------------------------------------------------------------------->
@@ -144,12 +144,9 @@
             après 20h00, ils doivent prévenir 24h à l'avance de leur arrivée</h2>
         <h1>COFFRE SÛR</h1>
         <h2>Une fois que vous vous êtes inscrit, la réceptionniste vous indiquera l'emplacement du coffre-fort
-            à l'intérieur duquel se trouve la clé qui contient le code qui est lié à sa chambre.
-            Seul l'invité qui s'est inscrit aura accès à ladite boîte. Aussi la boîte est exclusive
-            de chaque invité.
+          à l'intérieur duquel se trouve la clé, pour accéder au coffre-fort, vous devez saisir le code : <b style="color: RED;">{{room.enterCode}}</b>.
         </h2><br><br><br>
       </ng-container>
-
       </div>
     </form>
   </div>
