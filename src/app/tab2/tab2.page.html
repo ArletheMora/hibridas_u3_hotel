@@ -6,14 +6,21 @@
     </ion-row>
   </ion-toolbar>
 </ion-header>
-
+ 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
   </ion-header>
   
   <div id="container">
     <form >
+      <ion-select placeholder="Idioma"  id="categoria" name="categoria"  (ionChange)="obtenerValor($event)">
+        <ion-select-option value="1">Español</ion-select-option>
+        <ion-select-option value="2">Ingles</ion-select-option>
+        <ion-select-option value="3">Frances</ion-select-option>
+     </ion-select>
+
       <div class="formulario">
+        <ng-container *ngIf="seleccion=='1'">
         <h1>UBICACION</h1>
         <div class="slider-container">  
           <img
@@ -53,7 +60,96 @@
             Unicamente tendran acceso a dicha caja el huésped que realizo el registro. Ademas la caja es exclusiva
             de cada huésped.
         </h2><br><br><br>
-        
+      </ng-container>
+
+      <!--------------------------------------------------------------------------------------------->
+
+      <ng-container *ngIf="seleccion=='2'">
+        <h1>LOCATION</h1>
+        <div class="slider-container">  
+          <img
+            class="slider-item"
+            src="/assets/images/hotel.PNG"
+          />
+          <img
+            class="slider-item"
+            src="/assets/images/hotel2.PNG"
+          />
+        </div>
+        <h2>Located on the shores of the Santa María del Oro Lagoon, which was formed in the crater of a volcano
+          asleep, Santa Maria Resort is a "Boutique" style resort. </h2>
+        <h1>REGISTRATION PROCESS</h1>
+        <h2>It is necessary for the guest to provide all the data that the receptionist requests to bring
+          carry out the registration through the hotel application. Once registration is complete, the receptionist
+          It will indicate which is your room and will give you the password of the safe where you will find
+          your room key.
+        </h2>
+        <h1>SCHEDULE</h1>
+        <img src="/assets/images/horarios.png">
+        <h2>The Hotel will be open to the public from 8:00 a.m. to 9:30 p.m., if the guest wishes
+            enter or leave after 9:30 p.m., then he must ring the doorbell
+            major. The access door to the hotel after 9:30 p.m. will be opened and closed
+            only by hotel staff.</h2>
+        <h2>INPUT:</h2>
+        <h2>The check-in time to enter the room will be at 3:00 p.m.
+            onwards</h2>
+        <h2>OUTPUT:</h2>
+        <h2>The departure time must be no later than 12:00,
+            Otherwise, an additional night's stay will be charged. In the case of
+            that for personal reasons the guest has to register his entrance after
+            after 8:00 p.m., they must notify 24 hours in advance of their arrival</h2>
+        <h1>SAFE BOX</h1>
+        <h2>Once you have registered, the receptionist will let you know the location of the safe deposit box
+            within which is the key that contains the code that is linked to his room.
+            Only the guest who made the registration will have access to said box. Also the box is exclusive
+            of each guest.
+      </h2><br><br><br>
+      </ng-container>
+
+      <!--------------------------------------------------------------------------------------->
+
+      <ng-container *ngIf="seleccion=='3'">
+        <h1>EMPLACEMENT</h1>
+        <div class="slider-container">  
+          <img
+            class="slider-item"
+            src="/assets/images/hotel.PNG"
+          />
+          <img
+            class="slider-item"
+            src="/assets/images/hotel2.PNG"
+          />
+        </div>
+        <h2>Situé sur les rives de la lagune de Santa María del Oro, qui s'est formée dans le cratère d'un volcan
+          endormi, Santa Maria Resort est un complexe de style "Boutique". </h2>
+        <h1>PROCESSUS D'INSCRIPTION</h1>
+        <h2>Il est nécessaire que le client fournisse toutes les données que la réceptionniste demande à apporter
+            effectuer l'enregistrement via l'application de l'hôtel. Une fois l'inscription terminée, la réceptionniste
+            Il vous indiquera quelle est votre chambre et vous donnera le mot de passe du coffre-fort où vous trouverez
+            votre clé de chambre.
+        </h2>
+        <h1>CALENDRIER</h1>
+        <img src="/assets/images/horarios.png">
+        <h2>L'hôtel sera ouvert au public de 8h00 à 21h30, si le client le souhaite
+            entrer ou sortir après 21h30, puis il doit sonner à la porte
+            Majeur. La porte d'accès à l'hôtel après 21h30 sera ouverte et fermée
+            uniquement par le personnel de l'hôtel.</h2>
+        <h2>ENTRÉE :</h2>
+        <h2>L'heure d'enregistrement pour entrer dans la chambre sera à 15h00.
+            à partir de</h2>
+        <h2>SORTIE :</h2>
+        <h2>L'heure de départ doit être au plus tard à 12h00,
+            Dans le cas contraire, une nuit supplémentaire sera facturée. Dans le cas de
+            que pour des raisons personnelles, le client doit enregistrer son entrée après
+            après 20h00, ils doivent prévenir 24h à l'avance de leur arrivée</h2>
+        <h1>COFFRE SÛR</h1>
+        <h2>Une fois que vous vous êtes inscrit, la réceptionniste vous indiquera l'emplacement du coffre-fort
+            à l'intérieur duquel se trouve la clé qui contient le code qui est lié à sa chambre.
+            Seul l'invité qui s'est inscrit aura accès à ladite boîte. Aussi la boîte est exclusive
+            de chaque invité.
+        </h2><br><br><br>
+      </ng-container>
+
       </div>
     </form>
   </div>

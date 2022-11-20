@@ -6,7 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  seleccion:string
 
   constructor() {}
+
+  obtenerValor(e){
+    console.log(e.detail.value)
+     //this.categoria = e.detail.value;
+     
+     this.seleccion=e.detail.value;
+    }
+
 
 }
