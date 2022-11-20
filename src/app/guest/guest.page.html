@@ -16,8 +16,8 @@
     </ion-card-header>
     <ion-card-content>
       <label><b>Teléfono: </b>{{guest.phone}}</label><br><br>
-      <label><b>Fecha de entrada: </b> {{guest.fechaInicio}}</label><br><br>
-      <label><b>Fecha de salida: </b> {{guest.fechaInicio}}</label><br><br>
+      <label><b>Fecha de entrada: </b> {{guest.fechaInicio.toDateString()}}</label><br><br>
+      <label><b>Fecha de salida: </b> {{guest.fechaInicio.toDateString()}}</label><br><br>
       <label><b>Habitación: </b> {{guest.habitacion}} <b>   Token: </b> {{guest.token}}</label><br><br>
       <label><b>Anticipo: $</b>{{guest.pay}}</label><br><br>
       
