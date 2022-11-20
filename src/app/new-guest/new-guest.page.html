@@ -89,6 +89,19 @@
             </ng-container>
           </div>
         </ion-col>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Anticipo</ion-label>
+            <ion-input formControlName="pay" ></ion-input>
+          </ion-item>
+          <div>
+            <ng-container *ngFor="let item of validationMessage['pay']">
+              <div class="errormessage" *ngIf="(myForm.get('pay').dirty || myForm.get('pay').touched) && myForm.get('pay').hasError(item.type)">
+                {{item.message}}
+              </div>
+            </ng-container>
+          </div>
+        </ion-col>
       </ion-row>
       <ion-button (click)='addPerson()' expand="block" fill="clear" shape="round">
         Guardar

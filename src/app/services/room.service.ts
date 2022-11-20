@@ -12,22 +12,27 @@ export class RoomService {
   constructor() {
     this.ocuppied = [{
       enterCode: "11111",
-      roomCode: "A1"
+      roomCode: "A1",
+      price: 2500
     }, {
       enterCode: "22222",
-      roomCode: "A2"
+      roomCode: "A2",
+      price: 2500
     }]
     this.free = [{
       enterCode: "33333",
-      roomCode: "A3"
+      roomCode: "A3",
+      price: 2500
     },
     {
       enterCode: "44444",
-      roomCode: "A4"
+      roomCode: "A4",
+      price: 2500
     },
     {
       enterCode: "55555",
-      roomCode: "A5"
+      roomCode: "A5",
+      price: 2500
     }]
   }
 

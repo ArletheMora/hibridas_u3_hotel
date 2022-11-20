@@ -17,7 +17,8 @@ export class PersonService {
         fechaFin: new Date(),
         habitacion: '',
         tipo: 'admin',
-        token: 10000
+        token: 10000,
+        pay: 1000
       },
       {
         id: 2,
@@ -27,7 +28,8 @@ export class PersonService {
         fechaFin: new Date(),
         habitacion: 'A1',
         tipo: 'guest',
-        token: 10001
+        token: 10001,
+        pay: 1000
       },
       {
         id: 3,
@@ -37,7 +39,8 @@ export class PersonService {
         fechaFin: new Date(),
         habitacion: 'A2',
         tipo: 'guest',
-        token: 10002
+        token: 10002,
+        pay: 1000
       },
       {
         id: 4,
@@ -47,7 +50,8 @@ export class PersonService {
         fechaFin: new Date(),
         habitacion: 'A3',
         tipo: 'guest',
-        token: 10003
+        token: 10003,
+        pay: 1000
       },
     ];
   }

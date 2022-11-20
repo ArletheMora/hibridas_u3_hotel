@@ -67,6 +67,15 @@ export class NewGuestPage implements OnInit {
               Validators.maxLength(2)
             ]
           )
+        ],
+        pay: [
+          0,
+          Validators.compose(
+            [
+              Validators.required,
+              Validators.pattern('^[0-9]+$')
+            ]
+          )
         ]
       }
     );
@@ -112,10 +121,29 @@ export class NewGuestPage implements OnInit {
           message: 'Fecha obligatoria'
         }
       ],
-      'room': [
-        { type: 'required', message: "Elige una habitación" },
-        { type: 'minLength', message: "Elige una habitación" },
-        { type: 'maxLength', message: "Elige una habitación" }
+      room: [
+        { 
+          type: 'required', 
+          message: "Elige una habitación"
+        },
+        { 
+          type: 'minLength',
+          message: "Elige una habitación"
+        },
+        { 
+          type: 'maxLength', 
+          message: "Elige una habitación"
+        }
+      ],
+      pay: [
+        {
+          type: 'required',
+          message: 'El anticipo es obligatorio'
+        },
+        {
+          type: 'pattern',
+          message: 'El precio está mal formado'
+        }
       ]
     }
   }
@@ -139,7 +167,8 @@ export class NewGuestPage implements OnInit {
           fechaFin: this.newDate(this.myForm.get('fechaFin').value),
           habitacion: this.myForm.get('room').value,
           tipo: 'guest',
-          token: this.personService.getToken()
+          token: this.personService.getToken(),
+          pay: this.myForm.get('pay').value
         }
         this.personService.addPerson(g)
         let r: Room = this.rS.getFreeRoomByCode(this.myForm.get('room').value)

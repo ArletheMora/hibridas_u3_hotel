@@ -7,4 +7,5 @@ export class Person {
     habitacion: string;
     tipo: string;
     token: number;
+    pay: number;
 }
