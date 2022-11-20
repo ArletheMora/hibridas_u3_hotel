@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { PersonService } from './../services/person.service';
 import { Person } from './../models/person';
 import { Component, OnInit } from '@angular/core';
@@ -10,6 +11,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class GuestListPage implements OnInit {
   public personas!: Person[];
+  public huesped;
+
   public huespedes: Person[] = [];
   public url : String = "https://api.whatsapp.com/send?phone=+521"
   public token = "&text=El nombre de usuario y token son:"
@@ -17,10 +20,13 @@ export class GuestListPage implements OnInit {
 
   constructor(
     private alertController: AlertController,
-    private personService: PersonService
+    private personService: PersonService,
+    private router: Router
   ) {
     this.huespedes = [];
     this.personas = this.personService.getPersons();
+    
+
     for (let i = 0; i < this.personas.length; i++) {
       console.log(this.personas[i].tipo);
       if (this.personas[i].tipo === 'guest') {
@@ -36,6 +42,10 @@ export class GuestListPage implements OnInit {
     this.huespedes = this.personService.removePerson(id);
     this.personas = this.personService.getPersons();
     console.log(id);
+  }
+
+  public getGuest(phone : string){
+    this.router.navigate(['/guest'], {queryParams:{phone:phone}});
   }
 
   async presentAlert(id: number) {
