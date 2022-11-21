@@ -15,7 +15,8 @@ export class GuestListPage implements OnInit {
 
   public huespedes: Person[] = [];
   public url : String = "https://api.whatsapp.com/send?phone=+521"
-  public token = "&text=El nombre de usuario y token son:"
+  public msj1 = "&text= Gracias por hospedarte con nosotros, para entrar a ver información del hotel tu usuario es ";
+  public msj2 = "y tu token es: "
   //https://api.whatsapp.com/send?phone=+5213112264704&text=prueba
 
   constructor(
@@ -24,9 +25,18 @@ export class GuestListPage implements OnInit {
     private router: Router
   ) {
     this.huespedes = [];
-    this.personas = this.personService.getPersons();
-    
 
+  }
+  
+
+  ngOnInit() {
+    this.getGuests(); 
+  }
+
+  getGuests() {
+    this.personas = this.personService.getPersons();
+    console.log('refrescar', this.personas);
+    
     for (let i = 0; i < this.personas.length; i++) {
       console.log(this.personas[i].tipo);
       if (this.personas[i].tipo === 'guest') {
@@ -35,8 +45,6 @@ export class GuestListPage implements OnInit {
       }
     }
   }
-
-  ngOnInit() {}
 
   public removePerson(id: number) {
     this.huespedes = this.personService.removePerson(id);
