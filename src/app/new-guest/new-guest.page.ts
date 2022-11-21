@@ -179,6 +179,7 @@ export class NewGuestPage implements OnInit {
         });
         toast.present();
         this.myForm.reset();
+        this.r.navigate(['/guest-list']);
       }
     }
   }

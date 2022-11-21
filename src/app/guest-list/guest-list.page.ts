@@ -14,7 +14,7 @@ export class GuestListPage implements OnInit {
   
   public url : String = "https://api.whatsapp.com/send?phone=+521"
   public msj1 = "&text= Gracias por hospedarte con nosotros, para entrar a ver información del hotel tu usuario es ";
-  public msj2 = "y tu token es: "
+  public msj2 = " y tu token es: "
   //https://api.whatsapp.com/send?phone=+5213112264704&text=prueba
 
   constructor(
