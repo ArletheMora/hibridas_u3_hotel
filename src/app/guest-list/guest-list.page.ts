@@ -10,10 +10,8 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./guest-list.page.scss'],
 })
 export class GuestListPage implements OnInit {
-  public personas!: Person[];
-  public huesped;
-
-  public huespedes: Person[] = [];
+  public personas: Person[];
+  
   public url : String = "https://api.whatsapp.com/send?phone=+521"
   public msj1 = "&text= Gracias por hospedarte con nosotros, para entrar a ver información del hotel tu usuario es ";
   public msj2 = "y tu token es: "
@@ -24,32 +22,15 @@ export class GuestListPage implements OnInit {
     private personService: PersonService,
     private router: Router
   ) {
-    this.huespedes = [];
-
+    this.personas = this.personService.getGuests();
   }
   
 
   ngOnInit() {
-    this.getGuests(); 
-  }
-
-  getGuests() {
-    this.personas = this.personService.getPersons();
-    console.log('refrescar', this.personas);
-    
-    for (let i = 0; i < this.personas.length; i++) {
-      console.log(this.personas[i].tipo);
-      if (this.personas[i].tipo === 'guest') {
-        this.huespedes.push(this.personas[i]);
-        console.log('se agregó' + this.personas[i].name);
-      }
-    }
   }
 
   public removePerson(id: number) {
-    this.huespedes = this.personService.removePerson(id);
-    this.personas = this.personService.getPersons();
-    console.log(id);
+    this.personas = this.personService.removePerson(id);
   }
 
   public getGuest(phone : string){
@@ -78,5 +59,9 @@ export class GuestListPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  public refresh(){
+    this.personas = this.personService.getGuests();
   }
 }

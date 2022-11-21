@@ -8,37 +8,36 @@
 </ion-header>
 
 <ion-content>
-  <ion-row>
-    <ion-col>
-      <ion-list>
-        <ion-item-sliding *ngFor="let huesped of huespedes" >
+  <ion-row *ngFor="let huesped of personas">
+    <ion-item-sliding>
 
-          <ion-item-options side="start" (ionSwipe)="getGuest(huesped.phone)">
-            <ion-item-option color="primary">
-              <ion-icon slot="bottom" name="eye"></ion-icon>
-              Ver</ion-item-option>
-          </ion-item-options>
+      <ion-item-options side="start" (ionSwipe)="getGuest(huesped.phone)">
+        <ion-item-option color="primary">
+          <ion-icon slot="bottom" name="eye"></ion-icon>
+          Ver</ion-item-option>
+      </ion-item-options>
 
-          <ion-item class=""  href="{{url}}{{huesped.phone}}{{msj1}}{{huesped.phone}}{{msj2}}{{huesped.token}}">
-            <p>Nombre: {{huesped.name}}<br>     
-               Telefono: {{huesped.phone}}<br>
-               Fecha inicio: {{huesped.fechaInicio.toDateString()}}<br>
-               Fecha fin: {{huesped.fechaFin.toDateString()}}<br>
-               Habitacion: {{huesped.habitacion}}</p>
-          </ion-item>
+      <ion-item class=""  href="{{url}}{{huesped.phone}}{{msj1}}{{huesped.phone}}{{msj2}}{{huesped.token}}">
+        <p>Nombre: {{huesped.name}}<br>     
+            Telefono: {{huesped.phone}}<br>
+            Fecha inicio: {{huesped.fechaInicio.toDateString()}}<br>
+            Fecha fin: {{huesped.fechaFin.toDateString()}}<br>
+            Habitacion: {{huesped.habitacion}}</p>
+      </ion-item>
 
-          <ion-item-options side="end" (ionSwipe)="presentAlert(huesped.id)">
-            <ion-item-option color="danger" >
-              <ion-icon slot="bottom" name="trash"></ion-icon>Eliminar</ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
-    </ion-col>
+      <ion-item-options side="end" (ionSwipe)="presentAlert(huesped.id)">
+        <ion-item-option color="danger" >
+          <ion-icon slot="bottom" name="trash"></ion-icon>Eliminar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-row>
 
   <ion-fab vertical="bottom" horizontal="end">
     <ion-fab-button [routerLink]="['/new-guest']">
       <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="refresh()">
+      <ion-icon name="reload-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>

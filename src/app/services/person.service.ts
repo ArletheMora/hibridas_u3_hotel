@@ -67,9 +67,6 @@ export class PersonService {
 
   public removePerson(id: number): Person[] {
     this.people = this.people.filter((person) => person.id != id && person.tipo === 'guest');
-    for(let i =0; i<  this.people.length; i++ ){
-      console.log(this.people[i].name);
-    }
     return this.people;
   }
 
@@ -90,4 +87,10 @@ export class PersonService {
     );
     return item
   }
+
+  public getGuests():Person[] {
+    return this.people.filter((person) => person.tipo === 'guest');
+  }
+
 }
+
