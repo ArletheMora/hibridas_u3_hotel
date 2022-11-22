@@ -14,12 +14,14 @@ export class RoomService {
       enterCode: "11111",
       roomCode: "A1",
       price: 2500
-    }, {
-      enterCode: "22222",
-      roomCode: "A2",
-      price: 2500
     }]
     this.free = [{
+      enterCode: "22222",
+      roomCode: "A2",
+      price: 2500,
+        
+    },
+    {
       enterCode: "33333",
       roomCode: "A3",
       price: 2500
@@ -32,6 +34,16 @@ export class RoomService {
     {
       enterCode: "55555",
       roomCode: "A5",
+      price: 2500
+    },
+    {
+      enterCode: "55555",
+      roomCode: "A6",
+      price: 2500
+    },
+    {
+      enterCode: "55555",
+      roomCode: "A7",
       price: 2500
     }]
   }

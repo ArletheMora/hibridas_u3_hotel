@@ -11,46 +11,13 @@ export class PersonService {
     this.people = [
       {
         id: 1,
-        name: 'Juan Pablo Campos',
-        phone: '',
-        fechaInicio: new Date(),
-        fechaFin: new Date(),
-        habitacion: '',
-        tipo: 'admin',
-        token: 10000,
-        pay: 1000
-      },
-      {
-        id: 2,
-        name: 'Adrian',
-        phone: '3112222222',
-        fechaInicio: new Date(),
-        fechaFin: new Date(),
-        habitacion: 'A1',
-        tipo: 'guest',
-        token: 10001,
-        pay: 1000
-      },
-      {
-        id: 3,
-        name: 'Ana',
-        phone: '3112222221',
-        fechaInicio: new Date(),
-        fechaFin: new Date(),
-        habitacion: 'A2',
-        tipo: 'guest',
-        token: 10002,
-        pay: 1000
-      },
-      {
-        id: 4,
         name: 'Polo',
         phone: '3112272687',
         fechaInicio: new Date(),
         fechaFin: new Date(),
-        habitacion: 'A3',
+        habitacion: 'A1',
         tipo: 'guest',
-        token: 10003,
+        token: 10000,
         pay: 1000
       },
     ];
@@ -71,11 +38,19 @@ export class PersonService {
   }
 
   public getID(): number {
-    return this.people[this.people.length-1].id + 1;
+    if(this.people.length > 0){
+      return this.people[this.people.length-1].id + 1;
+    }else{
+      return 1;
+    }
   }
 
   public getToken(): number {
-    return this.people[this.people.length-1].token + 1;
+    if (this.people.length > 0) {
+      return this.people[this.people.length-1].token + 1;
+    }else{
+      return 10000;
+    }
   }
 
   public getGuestByPhoneNumber(pn: string): Person{

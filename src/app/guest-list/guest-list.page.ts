@@ -1,3 +1,4 @@
+import { RoomService } from './../services/room.service';
 import { Router } from '@angular/router';
 import { PersonService } from './../services/person.service';
 import { Person } from './../models/person';
@@ -20,6 +21,7 @@ export class GuestListPage implements OnInit {
   constructor(
     private alertController: AlertController,
     private personService: PersonService,
+    private roomService: RoomService,
     private router: Router
   ) {
     this.personas = this.personService.getGuests();
@@ -30,6 +32,10 @@ export class GuestListPage implements OnInit {
   }
 
   public removePerson(id: number) {
+    console.log(id);
+    
+    let huesped = this.personas[id-1].habitacion;
+    this.roomService.setFree(this.roomService.getOccupiedRoomByCode(huesped));
     this.personas = this.personService.removePerson(id);
   }
 
@@ -50,9 +56,8 @@ export class GuestListPage implements OnInit {
           text: 'Sí',
           cssClass: 'alert-button-confirm',
           handler: () => {
-            console.log(id);
             this.removePerson(id);
-            this.personas = this.personService.getPersons();
+            this.personas = this.personService.getGuests();
           },
         },
       ],
