@@ -1,51 +1,44 @@
 import { Person } from './../models/person';
 import { Injectable } from '@angular/core';
+import { map } from "rxjs/operators";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonService {
   private people: Person[];
+  private person: Person;
 
-  constructor() {
-    this.people = [
-      {
-        id: 1,
-        name: 'Polo',
-        phone: '3112272687',
-        fechaInicio: new Date(),
-        fechaFin: new Date(),
-        habitacion: 'A1',
-        tipo: 'guest',
-        token: 10000,
-        pay: 1000
-      },
-    ];
+  constructor(private firestore: AngularFirestore) {
   }
 
   public addPerson(persona: Person) {
-    this.people.push(persona);
-    console.log(this.people);
+    this.firestore.collection('person').add(persona);
   }
 
-  public getPersons(): Person[] {
-    return this.people;
+  public getPersons(): Observable<Person[]> {
+    return this.firestore.collection('person').snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Person;
+          const id = a.payload.doc.id;
+          return {id, ...data };
+        });
+      })
+    );
   }
 
-  public removePerson(id: number): Person[] {
-    this.people = this.people.filter((person) => person.id != id && person.tipo === 'guest');
-    return this.people;
-  }
-
-  public getID(): number {
-    if(this.people.length > 0){
-      return this.people[this.people.length-1].id + 1;
-    }else{
-      return 1;
-    }
+  public removePerson(id: string) {
+    this.firestore.collection('person').doc(id).delete();
   }
 
   public getToken(): number {
+    this.getPersons().subscribe(res => {
+      this.people = res;
+    });
+
     if (this.people.length > 0) {
       return this.people[this.people.length-1].token + 1;
     }else{
@@ -53,19 +46,14 @@ export class PersonService {
     }
   }
 
-  public getGuestByPhoneNumber(pn: string): Person{
-    let item: Person;
-    item = this.people.find(
-      (guest) => {
-        return guest.phone===pn
-      }
-    );
-    return item
+  public getGuestByPhoneNumber(id: string){
+    let item = this.firestore.collection('person').doc(id).valueChanges();
+    return item;
   }
 
-  public getGuests():Person[] {
-    return this.people.filter((person) => person.tipo === 'guest');
+  public getPersonById(id: string) {
+    let item = this.firestore.collection('person').doc(id).valueChanges();
+    return item;
   }
-
 }
 

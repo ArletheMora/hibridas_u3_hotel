@@ -30,7 +30,9 @@ export class NewGuestPage implements OnInit {
 
   ngOnInit() {
 
-    this.rooms = this.rS.getFree();
+    this.rS.getFree().subscribe( res => {
+      this.rooms = res;
+    });
 
     this.myForm = this.fb.group(
       {
@@ -160,19 +162,23 @@ export class NewGuestPage implements OnInit {
         toast.present();
       } else {
         let g: Person = {
-          id: this.personService.getID(),
           name: this.myForm.get('name').value,
           phone: this.myForm.get('phone').value,
-          fechaInicio: this.newDate(this.myForm.get('fechaInicio').value),
-          fechaFin: this.newDate(this.myForm.get('fechaFin').value),
+          fechaInicio: this.myForm.get('fechaInicio').value,
+          fechaFin: this.myForm.get('fechaFin').value,
           habitacion: this.myForm.get('room').value,
-          tipo: 'guest',
           token: this.personService.getToken(),
           pay: this.myForm.get('pay').value
         }
-        this.personService.addPerson(g)
-        let r: Room = this.rS.getFreeRoomByCode(this.myForm.get('room').value)
-        this.rS.setOcuppied(r)
+        this.personService.addPerson(g);
+
+        let r: Room;
+        
+        this.rS.getFreeRoomByCode(this.myForm.get('room').value).subscribe( res => {
+          r = res as Room;
+          this.rS.setOcuppied(r.id);
+        });
+        
         let toast = await this.tC.create({
           message: 'Reservación creada',
           duration: 2000
@@ -185,6 +191,6 @@ export class NewGuestPage implements OnInit {
   }
 
   public newDate(d: string): Date {
-    return new Date(d)
+    return new Date(d);
   }
 }

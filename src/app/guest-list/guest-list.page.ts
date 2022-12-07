@@ -11,6 +11,7 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./guest-list.page.scss'],
 })
 export class GuestListPage implements OnInit {
+  public persona: Person;
   public personas: Person[];
   
   public url : String = "https://api.whatsapp.com/send?phone=+521"
@@ -24,26 +25,34 @@ export class GuestListPage implements OnInit {
     private roomService: RoomService,
     private router: Router
   ) {
-    this.personas = this.personService.getGuests();
   }
   
-
   ngOnInit() {
+    this.personService.getPersons().subscribe( res => {
+      this.personas = res;
+      console.log(this.personas[0].fechaInicio);   
+    })
   }
 
-  public removePerson(id: number) {
-    console.log(id);
+  public formatDate(fecha){
+    let fechas = fecha.split('T');
+    return fechas[0];
+  }
+
+  public removePerson(id: string) {
+    this.personService.getPersonById(id).subscribe(res => {
+      this.persona = res as Person;
+    })
     
-    let huesped = this.personas[id-1].habitacion;
-    this.roomService.setFree(this.roomService.getOccupiedRoomByCode(huesped));
-    this.personas = this.personService.removePerson(id);
+    this.roomService.setFree(id);
+    this.personService.removePerson(id);
   }
 
-  public getGuest(phone : string){
-    this.router.navigate(['/guest'], {queryParams:{phone:phone}});
+  public getGuest(id : string){
+    this.router.navigate(['/guest'], {queryParams:{id:id}});
   }
 
-  async presentAlert(id: number) {
+  async presentAlert(id: string) {
     const alert = await this.alertController.create({
       header: '¿Seguro que deseas eliminar?',
       cssClass: 'custom-alert',
@@ -57,7 +66,6 @@ export class GuestListPage implements OnInit {
           cssClass: 'alert-button-confirm',
           handler: () => {
             this.removePerson(id);
-            this.personas = this.personService.getGuests();
           },
         },
       ],
@@ -67,6 +75,8 @@ export class GuestListPage implements OnInit {
   }
 
   public refresh(){
-    this.personas = this.personService.getGuests();
+    this.personService.getPersons().subscribe( res => {
+      this.personas = res;
+    })
   }
 }

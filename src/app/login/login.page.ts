@@ -1,3 +1,4 @@
+import { Person } from './../models/person';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RoomService } from './../services/room.service';
 import { ToastController } from '@ionic/angular';
@@ -13,7 +14,8 @@ import { Component, OnInit } from '@angular/core';
 export class LoginPage implements OnInit {
 
   public myForm: FormGroup;
-  public validationMessage: Object
+  public validationMessage: Object;
+  public persons: Person[];
 
   constructor(
     private personService: PersonService,
@@ -24,6 +26,11 @@ export class LoginPage implements OnInit {
   ) { }
  
   ngOnInit() {
+
+    this.personService.getPersons().subscribe( res => {
+      this.persons = res;
+    });
+
     this.myForm = this.fB.group({
       phone: [
         '',
@@ -89,8 +96,7 @@ export class LoginPage implements OnInit {
       this.r.navigate(
         ['/guest-list']
       )
-      this.myForm.reset()
-      return
+      this.myForm.reset();
     }
     if (this.myForm.valid) {
       if (this.reservaValida()) {
@@ -119,16 +125,20 @@ export class LoginPage implements OnInit {
   }
 
   reservaValida(): Boolean {
-    let user = this.personService.getGuestByPhoneNumber(this.myForm.get('phone').value)
-    if (user) {
-      if (user.token.toString() === this.myForm.get('token').value) {
-        return true
-      } else {
-        return false
+    let entro = false;
+    for(var i = 0; i < this.persons.length-1; i++) {
+      console.log(this.persons[i].token.toString());
+      console.log(this.myForm.get('token').value);
+      console.log(this.persons[i].phone.toString());
+      console.log(this.myForm.get('phone').value);
+      
+      if (this.persons[i].phone.toString() === this.myForm.get('phone').value && this.persons[i].token.toString() === this.myForm.get('token').value) {
+        console.log('Entró');
+        entro = true;
       }
-    } else {
-      return false
     }
+    console.log(entro);
+    return entro;
   }
 
 }

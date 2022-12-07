@@ -1,11 +1,12 @@
+import { Timestamp } from "rxjs";
+
 export class Person {
-    id: number;
+    id?: string;
     name: string;
     phone: string;
-    fechaInicio: Date;
-    fechaFin: Date;
+    fechaInicio: string;
+    fechaFin: string;
     habitacion: string;
-    tipo: string;
     token: number;
     pay: number;
 }

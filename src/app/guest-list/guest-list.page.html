@@ -11,7 +11,7 @@
   <ion-row *ngFor="let huesped of personas">
     <ion-item-sliding>
 
-      <ion-item-options side="start" (ionSwipe)="getGuest(huesped.phone)">
+      <ion-item-options side="start" (ionSwipe)="getGuest(huesped.id)">
         <ion-item-option color="primary">
           <ion-icon slot="bottom" name="eye"></ion-icon>
           Ver</ion-item-option>
@@ -20,8 +20,8 @@
       <ion-item class=""  href="{{url}}{{huesped.phone}}{{msj1}}{{huesped.phone}}{{msj2}}{{huesped.token}}">
         <p>Nombre: {{huesped.name}}<br>     
             Telefono: {{huesped.phone}}<br>
-            Fecha inicio: {{huesped.fechaInicio.toDateString()}}<br>
-            Fecha fin: {{huesped.fechaFin.toDateString()}}<br>
+            Fecha inicio: {{formatDate(huesped.fechaInicio)}}<br>
+            Fecha fin: {{formatDate(huesped.fechaFin)}}<br>
             Habitacion: {{huesped.habitacion}}</p>
       </ion-item>
 
