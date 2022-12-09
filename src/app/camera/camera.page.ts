@@ -41,7 +41,8 @@ export class CameraPage implements OnInit {
       resultType: this.checkPlataformForWeb() ? CameraResultType.DataUrl : CameraResultType.Uri
     });
     this.selectedImage = image;
-    if(this.checkPlataformForWeb()) this.selectedImage.webPath = image.dataUrl;
+    /* if(this.checkPlataformForWeb())  */
+    this.selectedImage.webPath = image.dataUrl;
     this.picture = {
       url: this.selectedImage.webPath
     }
