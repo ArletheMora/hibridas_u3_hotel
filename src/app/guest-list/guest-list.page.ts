@@ -4,6 +4,7 @@ import { PersonService } from './../services/person.service';
 import { Person } from './../models/person';
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Room } from '../models/room';
 
 @Component({
   selector: 'app-guest-list',
@@ -42,9 +43,14 @@ export class GuestListPage implements OnInit {
   public removePerson(id: string) {
     this.personService.getPersonById(id).subscribe(res => {
       this.persona = res as Person;
-    })
-    
-    this.roomService.setFree(id);
+      
+      let r: Room[];
+      
+      this.roomService.getRoomByCode(this.persona.habitacion).subscribe( res => {
+        r = res;
+        this.roomService.setFree(r[0].id);
+      });
+    })    
     this.personService.removePerson(id);
   }
 
