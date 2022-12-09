@@ -100,7 +100,6 @@ export class LoginPage implements OnInit {
     }
     if (this.myForm.valid) {
       if (this.reservaValida()) {
-        console.log(this.myForm.get('phone').value);
         this.r.navigate(['/tabs/tab2'], {
           queryParams: {
             phoneNumber: this.myForm.get('phone').value
@@ -133,11 +132,9 @@ export class LoginPage implements OnInit {
       console.log(this.myForm.get('phone').value);
       
       if (this.persons[i].phone.toString() === this.myForm.get('phone').value && this.persons[i].token.toString() === this.myForm.get('token').value) {
-        console.log('Entró');
         entro = true;
       }
     }
-    console.log(entro);
     return entro;
   }
 

@@ -18,6 +18,7 @@ export class NewGuestPage implements OnInit {
   public person: Person;
   public myForm: FormGroup;
   public validationMessage: Object;
+  public g : Person;
 
   constructor(
     private personService: PersonService,
@@ -26,10 +27,20 @@ export class NewGuestPage implements OnInit {
     private tC: ToastController,
     private r: Router,
 
-  ) { }
+  ) { 
+    this.g = {
+      name: "",
+      phone: "",
+      fechaInicio: "",
+      fechaFin: "",
+      habitacion: "",
+      token: this.personService.getToken(),
+      pay: 0,
+    }
+  }
 
   ngOnInit() {
-
+  
     this.rS.getFree().subscribe( res => {
       this.rooms = res;
     });
@@ -161,22 +172,21 @@ export class NewGuestPage implements OnInit {
         });
         toast.present();
       } else {
-        let g: Person = {
+        this.g = {
           name: this.myForm.get('name').value,
           phone: this.myForm.get('phone').value,
           fechaInicio: this.myForm.get('fechaInicio').value,
           fechaFin: this.myForm.get('fechaFin').value,
           habitacion: this.myForm.get('room').value,
-          token: this.personService.getToken(),
           pay: this.myForm.get('pay').value
         }
-        this.personService.addPerson(g);
+        this.personService.addPerson(this.g);
 
-        let r: Room;
+        let r: Room[];
         
-        this.rS.getFreeRoomByCode(this.myForm.get('room').value).subscribe( res => {
-          r = res as Room;
-          this.rS.setOcuppied(r.id);
+        this.rS.getRoomByCode(this.myForm.get('room').value).subscribe( res => {
+          r = res;
+          this.rS.setOcuppied(r[0].id);
         });
         
         let toast = await this.tC.create({

@@ -16,6 +16,30 @@ export class RoomService {
     
   }
 
+  public getRooms(): Observable<Room[]> {
+    return this.firestore.collection('rooms').snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Room;
+          const id = a.payload.doc.id;
+          return {id, ...data };
+        })
+      })
+    )
+  }
+
+  public getRoomByCode(code: string): Observable<Room[]> {
+    return this.firestore.collection('rooms').snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as Room;
+          const id = a.payload.doc.id;
+          return {id, ...data };
+        }).filter(room => room.roomCode == code);
+      })
+    )
+  }
+
   public getOccupied(): Observable<Room[]> {
     return this.firestore.collection('rooms').snapshotChanges().pipe(
       map(actions => {
@@ -50,15 +74,6 @@ export class RoomService {
     this.firestore.collection('rooms').doc(id).update({
       occupied: false
     })
-  }
-
-  public getOccupiedRoomByCode(code: string): Room{
-    let item = this.ocuppied.find(
-      (room) => {
-        return room.roomCode===code;
-      }
-    );
-    return item;
   }
 
   public getFreeRoomByCode(code: string){

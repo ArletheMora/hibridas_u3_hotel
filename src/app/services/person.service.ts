@@ -35,15 +35,14 @@ export class PersonService {
   }
 
   public getToken(): number {
+    let token = 10000;
     this.getPersons().subscribe(res => {
       this.people = res;
+      if (this.people.length > 0) {
+        token = this.people[this.people.length-1].token + 1;
+      }      
     });
-
-    if (this.people.length > 0) {
-      return this.people[this.people.length-1].token + 1;
-    }else{
-      return 10000;
-    }
+    return token;
   }
 
   public getGuestByPhoneNumber(id: string){

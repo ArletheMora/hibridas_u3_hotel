@@ -14,7 +14,9 @@ export class Tab2Page implements OnInit {
   
   public seleccion: string;
   public person: Person;
+  public persons: Person[];
   public room: Room;
+  public rooms: Room[];
   public montoRestante: number;
 
   constructor(
@@ -24,13 +26,18 @@ export class Tab2Page implements OnInit {
   ) {}
 
   ngOnInit(){
-    this.activatedRoute.queryParams.subscribe( (params) => {
-      
-      this.PersonService.getGuestByPhoneNumber(params.phoneNumber).subscribe(res => {
-        this.person = res as Person;
-        console.log(this.person);
-      });
-    })
+    this.PersonService.getPersons().subscribe(res => {
+      this.persons = res;
+      this.activatedRoute.queryParams.subscribe( (params) => {
+        for(var i = 0; i < this.persons.length; i++){
+          
+          if(this.persons[i].phone == params.phoneNumber){
+            this.person = this.persons[i];
+          }
+        }
+      })
+    });
+    
   }
 
   obtenerValor(e){
@@ -39,8 +46,11 @@ export class Tab2Page implements OnInit {
   }
 
   getRoom(){
-    this.room = this.roomService.getOccupiedRoomByCode(this.person.habitacion);
-    this.getMontoRestante();
+    this.roomService.getRoomByCode(this.person.habitacion).subscribe(res => {
+      this.rooms = res;
+      this.room = this.rooms[0];
+      this.getMontoRestante();
+    });
   }
 
   getMontoRestante(){
@@ -51,8 +61,8 @@ export class Tab2Page implements OnInit {
     let fechaActual = new Date();
     let fechaIngreso = new Date(this.person.fechaInicio);
     let fechaSalida = new Date(this.person.fechaFin);
+    
     let valido = fechaActual >= fechaIngreso && fechaActual <= fechaSalida ? true : false;
-    console.log(valido);
     
     return valido;
   }
