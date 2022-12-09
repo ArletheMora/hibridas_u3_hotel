@@ -44,6 +44,10 @@ const routes: Routes = [
   },  {
     path: 'guest',
     loadChildren: () => import('./guest/guest.module').then( m => m.GuestPageModule)
+  },
+  {
+    path: 'camera',
+    loadChildren: () => import('./camera/camera.module').then( m => m.CameraPageModule)
   }
 
 ];

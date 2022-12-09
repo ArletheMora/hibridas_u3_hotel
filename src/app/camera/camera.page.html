@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Galería</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <label>Agrega una nueva foto a nuestra galería</label>
+    </ion-item>
+    <ion-button
+      (click)="getPicture()"
+      expand="block"
+      class="ion-margin"
+      shape="round"
+    >
+      Tomar foto
+    </ion-button>
+
+    <ion-item>
+      <!-- <img [src]="selectedImage?.webPath" alt="imagen tomada"> -->
+      <!-- <img src="data:image/png;base64,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" alt=""> -->
+    </ion-item>
+  </ion-card>
+
+  <div id="container">
+    <ion-slides mode="ios" pager="ios" scrollbar="ios">
+      <ion-slide *ngFor="let picture of pictures">
+        <ion-card>
+          <img [src]="picture.url" alt="imagen" />
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

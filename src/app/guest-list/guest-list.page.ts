@@ -14,8 +14,8 @@ import { Room } from '../models/room';
 export class GuestListPage implements OnInit {
   public persona: Person;
   public personas: Person[];
-  
-  public url : String = "https://api.whatsapp.com/send?phone=+521"
+
+  public url: String = "https://api.whatsapp.com/send?phone=+521"
   public msj1 = "&text= Gracias por hospedarte con nosotros, para entrar a ver información del hotel tu usuario es ";
   public msj2 = " y tu token es: "
   //https://api.whatsapp.com/send?phone=+5213112264704&text=prueba
@@ -27,15 +27,15 @@ export class GuestListPage implements OnInit {
     private router: Router
   ) {
   }
-  
+
   ngOnInit() {
-    this.personService.getPersons().subscribe( res => {
+    this.personService.getPersons().subscribe(res => {
       this.personas = res;
-      console.log(this.personas[0].fechaInicio);   
+      console.log(this.personas[0].fechaInicio);
     })
   }
 
-  public formatDate(fecha){
+  public formatDate(fecha) {
     let fechas = fecha.split('T');
     return fechas[0];
   }
@@ -43,19 +43,19 @@ export class GuestListPage implements OnInit {
   public removePerson(id: string) {
     this.personService.getPersonById(id).subscribe(res => {
       this.persona = res as Person;
-      
+
       let r: Room[];
-      
-      this.roomService.getRoomByCode(this.persona.habitacion).subscribe( res => {
+
+      this.roomService.getRoomByCode(this.persona.habitacion).subscribe(res => {
         r = res;
         this.roomService.setFree(r[0].id);
       });
-    })    
+    })
     this.personService.removePerson(id);
   }
 
-  public getGuest(id : string){
-    this.router.navigate(['/guest'], {queryParams:{id:id}});
+  public getGuest(id: string) {
+    this.router.navigate(['/guest'], { queryParams: { id: id } });
   }
 
   async presentAlert(id: string) {
@@ -80,8 +80,8 @@ export class GuestListPage implements OnInit {
     await alert.present();
   }
 
-  public refresh(){
-    this.personService.getPersons().subscribe( res => {
+  public refresh() {
+    this.personService.getPersons().subscribe(res => {
       this.personas = res;
     })
   }
