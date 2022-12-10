@@ -38,7 +38,7 @@ export class CameraPage implements OnInit {
       quality: 90,
       source: CameraSource.Prompt,
       width: 600,
-      resultType: CameraResultType.DataUrl
+      resultType: CameraResultType.Uri
     });
     this.selectedImage = image;
     /* if(this.checkPlataformForWeb())  */
