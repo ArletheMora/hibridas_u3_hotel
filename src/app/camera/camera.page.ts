@@ -18,7 +18,7 @@ export class CameraPage implements OnInit {
   public picture: Picture;
 
   constructor(
-    private pictureService : PictureService
+    private pictureService: PictureService
   ) { }
 
   ngOnInit() {
@@ -28,17 +28,17 @@ export class CameraPage implements OnInit {
     })
   }
 
-  checkPlataformForWeb(){
-    if(Capacitor.getPlatform() == 'web') return true;
+  /* checkPlataformForWeb() {
+    if (Capacitor.getPlatform() == 'web') return true;
     return false;
-  }
+  } */
 
   async getPicture() {
     const image = await Camera.getPhoto({
       quality: 90,
       source: CameraSource.Prompt,
-      width:  600,
-      resultType: this.checkPlataformForWeb() ? CameraResultType.DataUrl : CameraResultType.Uri
+      width: 600,
+      resultType: CameraResultType.DataUrl
     });
     this.selectedImage = image;
     /* if(this.checkPlataformForWeb())  */
@@ -49,5 +49,5 @@ export class CameraPage implements OnInit {
     this.pictureService.savePicture(this.picture);
     console.log(this.selectedImage.webPath);
   }
-  
+
 }
