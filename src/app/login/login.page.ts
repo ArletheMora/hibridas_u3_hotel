@@ -125,12 +125,7 @@ export class LoginPage implements OnInit {
 
   reservaValida(): Boolean {
     let entro = false;
-    for(var i = 0; i < this.persons.length-1; i++) {
-      console.log(this.persons[i].token.toString());
-      console.log(this.myForm.get('token').value);
-      console.log(this.persons[i].phone.toString());
-      console.log(this.myForm.get('phone').value);
-      
+    for(var i = 0; i < this.persons.length; i++) {
       if (this.persons[i].phone.toString() === this.myForm.get('phone').value && this.persons[i].token.toString() === this.myForm.get('token').value) {
         entro = true;
       }
