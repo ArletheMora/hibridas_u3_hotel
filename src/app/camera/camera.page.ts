@@ -1,3 +1,4 @@
+import { Photo } from './../../../node_modules/@capacitor/camera/dist/esm/definitions.d';
 import { Picture } from './../models/picture';
 import { PictureService } from './../services/picture.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,7 @@ import { Capacitor } from '@capacitor/core';
 })
 export class CameraPage implements OnInit {
 
-  selectedImage: any;
+  selectedImage: Photo;
 
   public pictures: Picture[];
   public picture: Picture;
@@ -28,26 +29,20 @@ export class CameraPage implements OnInit {
     })
   }
 
-  /* checkPlataformForWeb() {
-    if (Capacitor.getPlatform() == 'web') return true;
-    return false;
-  } */
-
   async getPicture() {
     const image = await Camera.getPhoto({
-      quality: 90,
+      quality: 100,
       source: CameraSource.Prompt,
-      width: 600,
+      width: 400,
       resultType: CameraResultType.DataUrl
     });
     this.selectedImage = image;
-    /* if(this.checkPlataformForWeb())  */
-    this.selectedImage.webPath = image.dataUrl;
+    //if(this.checkPlataformForWeb()) this.selectedImage.webPath = image.dataUrl;
     this.picture = {
-      url: this.selectedImage.webPath
+      url: this.selectedImage.dataUrl
     }
     this.pictureService.savePicture(this.picture);
-    console.log(this.selectedImage.webPath);
+    //console.log(this.selectedImage.webPath);
   }
 
 }
